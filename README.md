@@ -3,7 +3,6 @@
 This repository contains a full-stack blog application built with the MERN stack (MongoDB, Express, React, Node.js). It includes post creation, viewing, comments, favourites, and saved posts. User authentication is implemented manually using MongoDB for user storage.
 
 ---
-<<<<<<< HEAD
 
 ## Key features
 
@@ -90,34 +89,32 @@ Open [http://localhost:5173](http://localhost:5173) for the frontend (or port fr
 
 ### Login Page
 
-![App Screenshot](/githubPictures/Screenshot%20from%202025-08-12%2016-23-24.png)
+![App Screenshot](/public/githubPictures/Screenshot%20from%202025-08-12%2016-23-24.png)
 
 ### Home Page
 
-![App Screenshot](/githubPictures/Screenshot%20from%202025-08-12%2016-23-53.png)
+![App Screenshot](/public/githubPictures/Screenshot%20from%202025-08-12%2016-23-53.png)
 
 ### Home Page Blogs
 
-![App Screenshot](/githubPictures/Screenshot%20from%202025-08-12%2016-24-00.png)
+![App Screenshot](/public/githubPictures/Screenshot%20from%202025-08-12%2016-24-00.png)
 
 ### Blogs Details
 
-![App Screenshot](/githubPictures/Screenshot%20from%202025-08-12%2016-24-11.png)
+![App Screenshot](/public/githubPictures/Screenshot%20from%202025-08-12%2016-24-11.png)
 
 ### Blogs Details Comments
 
-![App Screenshot](/githubPictures//Screenshot%20from%202025-08-12%2016-24-34.png)
+![App Screenshot](/public/githubPictures//Screenshot%20from%202025-08-12%2016-24-34.png)
 
 ### Bookmark Page
 
-![App Screenshot](/githubPictures/Screenshot%20from%202025-08-12%2016-24-51.png)
+![App Screenshot](/public/githubPictures/Screenshot%20from%202025-08-12%2016-24-51.png)
 
 ### Profile Details
-![App Screenshot](/githubPictures/Screenshot%20from%202025-08-12%2016-24-57.png)
+![App Screenshot](/public/githubPictures/Screenshot%20from%202025-08-12%2016-24-57.png)
 
 ### About Page
-![App Screenshot](/githubPictures/Screenshot%20from%202025-08-12%2016-25-09.png)
+![App Screenshot](/public/githubPictures/Screenshot%20from%202025-08-12%2016-25-09.png)
 
 ---
-=======
->>>>>>> 95f4dff02a5ca2aee6768d6e603492e7133700a6
