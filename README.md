@@ -3,6 +3,7 @@
 This repository contains a full-stack blog application built with the MERN stack (MongoDB, Express, React, Node.js). It includes post creation, viewing, comments, favourites, and saved posts. User authentication is implemented manually using MongoDB for user storage.
 
 ---
+<<<<<<< HEAD
 
 ## Key features
 
@@ -118,3 +119,5 @@ Open [http://localhost:5173](http://localhost:5173) for the frontend (or port fr
 ![App Screenshot](/githubPictures/Screenshot%20from%202025-08-12%2016-25-09.png)
 
 ---
+=======
+>>>>>>> 95f4dff02a5ca2aee6768d6e603492e7133700a6
