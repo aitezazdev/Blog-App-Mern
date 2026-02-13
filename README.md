@@ -44,15 +44,15 @@ This repository contains a full-stack blog application built with the MERN stack
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/vilezaz/MERN-Blog-App.git
+git clone https://github.com/aitezazdev/MERN-Blog-App.git
 ```
 
 ### 2. Install dependencies for both backend and frontend
 
 ```bash
 cd MERN-Blog-App
-cd backend && npm install
-cd ../frontend && npm install
+cd ./backend && npm install
+cd ./frontend && npm install
 ```
 
 ### 3. Set up environment variables
