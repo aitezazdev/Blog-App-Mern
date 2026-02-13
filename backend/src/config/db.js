@@ -7,7 +7,7 @@ if (!cached) {
   cached = global.mongoose = { conn: null, promise: null };
 }
 
-const dbConnection = async () => {
+export const dbConnection = async () => {
   if (cached.conn) return cached.conn;
 
   if (!cached.promise) {
@@ -27,5 +27,3 @@ const dbConnection = async () => {
   console.log(`MongoDB connected!! Host: ${cached.conn.connection.host}`);
   return cached.conn;
 };
-
-export default dbConnection;

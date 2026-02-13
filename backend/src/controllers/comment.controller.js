@@ -1,18 +1,23 @@
 import Comment from "../models/comment.model.js";
 import Post from "../models/post.model.js";
 
+// add comment
 const addComment = async (req, res) => {
   try {
     const { content } = req.body;
     const postId = req.params.postId;
 
     if (!content) {
-      return res.status(400).json({ success: false, message: "Content is required" });
+      return res
+        .status(400)
+        .json({ success: false, message: "Content is required" });
     }
 
     const post = await Post.findById(postId);
     if (!post) {
-      return res.status(404).json({ success: false, message: "Post not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Post not found" });
     }
 
     const comment = await Comment.create({
@@ -27,24 +32,21 @@ const addComment = async (req, res) => {
     res.status(201).json({
       success: true,
       message: "Comment added",
-      data: comment,
+      data: comment
     });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
 };
 
+// edit comment
 const editComment = async (req, res) => {
   try {
-    const { content } = req.body;
-
-    if (!content) {
-      return res.status(400).json({ success: false, message: "Content is required" });
-    }
-
     const comment = await Comment.findById(req.params.commentId);
     if (!comment) {
-      return res.status(404).json({ success: false, message: "Comment not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Comment not found" });
     }
 
     if (comment.user.toString() !== req.user.id) {
@@ -54,7 +56,7 @@ const editComment = async (req, res) => {
       });
     }
 
-    comment.content = content;
+    comment.content = req.body.content || comment.content;
     await comment.save();
 
     res.status(200).json({
@@ -67,14 +69,19 @@ const editComment = async (req, res) => {
   }
 };
 
+// delete comment
 const deleteComment = async (req, res) => {
   try {
     const comment = await Comment.findById(req.params.commentId);
     if (!comment) {
-      return res.status(404).json({ success: false, message: "Comment not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Comment not found" });
     }
 
-    if (comment.user.toString() !== req.user.id) {
+    const isOwner = comment.user.toString() === req.user.id;
+
+    if (!isOwner) {
       return res.status(403).json({
         success: false,
         message: "Not authorized to delete this comment",
@@ -98,6 +105,7 @@ const deleteComment = async (req, res) => {
   }
 };
 
+// comments for a post
 const getCommentsForPost = async (req, res) => {
   try {
     const comments = await Comment.find({ post: req.params.postId })

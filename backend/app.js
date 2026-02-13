@@ -1,5 +1,5 @@
 import express from "express";
-import dbConnection from "./src/config/db.js";
+import { dbConnection } from "./src/config/db.js";
 import dotenv from "dotenv";
 import cors from "cors";
 import authRouter from "./src/routes/auth.routes.js";
@@ -18,7 +18,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-dbConnection();
+app.use(async (req, res, next) => {
+  await dbConnection();
+  next();
+});
 
 app.get("/", (req, res) => {
   res.send("Hello world");
@@ -35,3 +38,5 @@ app.use("/user-posts", searchRouter);
 app.listen(process.env.PORT, () => {
   console.log(`Server running on port ${process.env.PORT}`);
 });
+
+export default app;
