@@ -4,41 +4,30 @@ import User from "../models/user.model.js";
 import Comment from "../models/comment.model.js";
 import cloudinary from "../config/cloudinary.js";
 
-// create post
 const createPost = async (req, res) => {
   try {
     const { title, content, tags } = req.body;
 
     if (!title) {
-      return res.status(400).json({
-        success: false,
-        message: "title is required",
-      });
+      return res.status(400).json({ success: false, message: "title is required" });
     }
 
     if (!content) {
-      return res.status(400).json({
-        success: false,
-        message: "content is required",
-      });
+      return res.status(400).json({ success: false, message: "content is required" });
     }
 
     if (!req.file) {
-      return res.status(400).json({
-        success: false,
-        message: "image file is required",
-      });
+      return res.status(400).json({ success: false, message: "image file is required" });
     }
 
     const uploadResult = await cloudinary.uploader.upload(req.file.path, {
       folder: "posts",
     });
 
-    if(!uploadResult.secure_url) {
-      return res.status(500).json({
-        success: false,
-        message: "Error uploading image",
-      });
+    fs.unlinkSync(req.file.path);
+
+    if (!uploadResult.secure_url) {
+      return res.status(500).json({ success: false, message: "Error uploading image" });
     }
 
     const user = await User.findById(req.user.id);
@@ -70,26 +59,22 @@ const createPost = async (req, res) => {
       data: post,
     });
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+    if (req.file?.path && fs.existsSync(req.file.path)) {
+      fs.unlinkSync(req.file.path);
+    }
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
-// delete post
 const deletePost = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
     if (!post) {
-      return res.status(404).json({
-        success: false,
-        message: "Post not found",
-      });
+      return res.status(404).json({ success: false, message: "Post not found" });
     }
 
     if (post.author.toString() !== req.user.id) {
-      return res.status(401).json({
+      return res.status(403).json({
         success: false,
         message: "You are not authorized to delete this post",
       });
@@ -100,16 +85,16 @@ const deletePost = async (req, res) => {
     }
 
     await Comment.deleteMany({ post: post._id });
-
     await post.deleteOne();
 
     const user = await User.findById(req.user.id);
     user.createdPosts.pull(post._id);
-    
+
     await User.updateMany(
       { savedPosts: post._id },
       { $pull: { savedPosts: post._id } }
     );
+
     await user.save();
 
     res.status(200).json({
@@ -118,28 +103,21 @@ const deletePost = async (req, res) => {
       data: post,
     });
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
-// update post
 const updatePost = async (req, res) => {
   try {
     const { title, content, tags } = req.body;
 
     const post = await Post.findById(req.params.id);
     if (!post) {
-      return res.status(404).json({
-        success: false,
-        message: "Post not found",
-      });
+      return res.status(404).json({ success: false, message: "Post not found" });
     }
 
     if (post.author.toString() !== req.user.id) {
-      return res.status(401).json({
+      return res.status(403).json({
         success: false,
         message: "You are not authorized to update this post",
       });
@@ -154,12 +132,12 @@ const updatePost = async (req, res) => {
         folder: "posts",
       });
 
+      fs.unlinkSync(req.file.path);
+
       post.image = {
         url: uploadResult.secure_url,
         public_id: uploadResult.public_id,
       };
-
-      fs.unlinkSync(req.file.path);
     }
 
     post.title = title || post.title;
@@ -174,20 +152,18 @@ const updatePost = async (req, res) => {
       data: post,
     });
   } catch (error) {
+    if (req.file?.path && fs.existsSync(req.file.path)) {
+      fs.unlinkSync(req.file.path);
+    }
     return res.status(500).json({ success: false, message: error.message });
   }
 };
 
-// get all posts
 const getAllPosts = async (req, res) => {
   try {
-    const posts = await Post.find().populate("author");
-    if (!posts) {
-      return res.status(404).json({
-        success: false,
-        message: "Posts not found",
-      });
-    }
+    const posts = await Post.find()
+      .populate("author", "name email bio")
+      .sort({ createdAt: -1 });
 
     res.status(200).json({
       success: true,
@@ -195,22 +171,18 @@ const getAllPosts = async (req, res) => {
       data: posts,
     });
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
-// posts by ID
 const getPostById = async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id).populate("author");
+    const post = await Post.findById(req.params.id)
+      .populate("author", "name email bio")
+      .populate("comments");
+
     if (!post) {
-      return res.status(404).json({
-        success: false,
-        message: "Post not found",
-      });
+      return res.status(404).json({ success: false, message: "Post not found" });
     }
 
     res.status(200).json({
@@ -219,18 +191,17 @@ const getPostById = async (req, res) => {
       data: post,
     });
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
-// posts by author
 const getPostsByAuthor = async (req, res) => {
   try {
-    const posts = await Post.find({ author: req.params.id }).populate("author");
-    if (posts.length === 0 || !posts) {
+    const posts = await Post.find({ author: req.params.id })
+      .populate("author", "name email bio")
+      .sort({ createdAt: -1 });
+
+    if (posts.length === 0) {
       return res.status(404).json({
         success: false,
         message: "Posts not created yet by this user",
@@ -243,10 +214,7 @@ const getPostsByAuthor = async (req, res) => {
       data: posts,
     });
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 

@@ -1,18 +1,31 @@
 import mongoose from "mongoose";
 import { DB_NAME } from "../constants.js";
 
+let cached = global.mongoose;
+
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
+}
+
 const dbConnection = async () => {
+  if (cached.conn) return cached.conn;
+
+  if (!cached.promise) {
+    cached.promise = mongoose.connect(`${process.env.MONGO_URI}/${DB_NAME}`, {
+      bufferCommands: false,
+    });
+  }
+
   try {
-    const connectionInstance = await mongoose.connect(
-      `${process.env.MONGO_URL}/${DB_NAME}`
-    );
-    console.log(
-      `MongoDB connected!! Host: ${connectionInstance.connection.host}`
-    );
+    cached.conn = await cached.promise;
   } catch (error) {
+    cached.promise = null;
     console.error("MongoDB connection FAILED:", error);
     process.exit(1);
   }
+
+  console.log(`MongoDB connected!! Host: ${cached.conn.connection.host}`);
+  return cached.conn;
 };
 
 export default dbConnection;
