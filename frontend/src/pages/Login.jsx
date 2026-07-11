@@ -40,68 +40,68 @@ const Login = () => {
   };
 
   return (
-    <div className="w-full min-h-[92vh] flex items-center justify-center bg-black">
-      <div className="w-[480px] px-6">
-        <form onSubmit={handleSubmit} className="bg-neutral-900 shadow-xl rounded-xl px-8 pt-6 pb-10 border border-neutral-800 transition-all">
+    <div className="w-full min-h-[85vh] flex items-center justify-center bg-zinc-950 px-4">
+      <div className="w-full max-w-[420px]">
+        <form onSubmit={handleSubmit} className="bg-zinc-900/40 rounded-xl px-8 py-10 border border-zinc-800 shadow-2xl backdrop-blur-sm transition-all duration-300">
           <div className="mb-8 text-center">
-            <h3 className="text-3xl font-bold text-white mb-2">Welcome Back</h3>
-            <p className="text-neutral-400">Sign in to access your account</p>
+            <h3 className="text-2xl font-bold tracking-tight text-white mb-2">Welcome back</h3>
+            <p className="text-sm text-zinc-400">Sign in to access your dashboard</p>
           </div>
 
           {errors.backend && (
-            <div className="bg-red-900/30 border-l-4 border-red-500 text-red-300 px-4 py-1 flex items-center rounded mb-6" role="alert">
-              <MdOutlineError className="w-6 h-6 mr-4 text-red-500" />
-              <span className="text-sm">{errors.backend}</span>
+            <div className="bg-red-950/20 border-l-4 border-red-500 text-red-300 px-4 py-2 flex items-center rounded mb-6" role="alert">
+              <MdOutlineError className="w-5 h-5 mr-3 text-red-500 flex-shrink-0" />
+              <span className="text-xs">{errors.backend}</span>
             </div>
           )}
 
-          <div className="space-y-6">
+          <div className="space-y-5">
             <div>
-              <label htmlFor="email" className="block text-neutral-300 text-sm font-semibold mb-2">Email Address</label>
+              <label htmlFor="email" className="block text-zinc-400 text-xs font-semibold uppercase tracking-wider mb-2">Email Address</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <MdOutlineEmail className="w-5 h-5 text-neutral-500" />
+                  <MdOutlineEmail className="w-5 h-5 text-zinc-550" />
                 </div>
                 <input autoComplete="off"
                   onChange={handleChange}
                   value={data.email}
-                  className="w-full pl-10 py-3 px-4 text-white bg-neutral-800 rounded-lg border border-neutral-600 focus:outline-none focus:ring-2 focus:ring-emerald-400 transition-all"
+                  className="w-full pl-10 py-2.5 px-4 text-sm text-zinc-100 bg-zinc-950/50 border border-zinc-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/25 focus:border-indigo-500 transition-all duration-200"
                   type="email"
                   name="email"
                   id="email"
-                  placeholder="user@example.com"
+                  placeholder="name@agency.com"
                 />
               </div>
-              {errors.email && <p className="text-red-400 text-sm mt-1">{errors.email}</p>}
+              {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-neutral-300 text-sm font-semibold mb-2">Password</label>
+              <label htmlFor="password" className="block text-zinc-400 text-xs font-semibold uppercase tracking-wider mb-2">Password</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <RiLockPasswordLine className="w-5 h-5 text-neutral-500" />
+                  <RiLockPasswordLine className="w-5 h-5 text-zinc-550" />
                 </div>
                 <input autoComplete="off"
                   onChange={handleChange}
                   value={data.password}
-                  className="w-full pl-10 py-3 px-4 text-white bg-neutral-800 rounded-lg border border-neutral-600 focus:outline-none focus:ring-2 focus:ring-emerald-400 transition-all"
+                  className="w-full pl-10 py-2.5 px-4 text-sm text-zinc-100 bg-zinc-950/50 border border-zinc-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/25 focus:border-indigo-500 transition-all duration-200"
                   type="password"
                   name="password"
                   id="password"
                   placeholder="••••••••"
                 />
               </div>
-              {errors.password && <p className="text-red-400 text-sm mt-1">{errors.password}</p>}
+              {errors.password && <p className="text-red-400 text-xs mt-1">{errors.password}</p>}
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full cursor-pointer flex justify-center py-3 px-4 rounded-lg shadow text-black font-semibold transition-all disabled:opacity-60 bg-emerald-400 hover:bg-emerald-300 focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500">
+              className="w-full cursor-pointer flex justify-center py-2.5 px-4 rounded-lg text-zinc-950 font-semibold transition-all hover:bg-white bg-zinc-100 hover:scale-[1.01] active:scale-[0.99] text-sm focus:ring-2 focus:ring-indigo-500/20 disabled:opacity-60">
               {loading ? (
                 <span className="flex items-center">
                   <BiLoaderAlt className="animate-spin -ml-1 mr-3 h-5 w-5" />
-                  Signing in...
+                  Authenticating...
                 </span>
               ) : (
                 "Sign In"
@@ -110,9 +110,9 @@ const Login = () => {
           </div>
 
           <div className="mt-8 text-center">
-            <p className="text-neutral-400">
+            <p className="text-sm text-zinc-400">
               Don't have an account?{" "}
-              <Link to="/register" className="text-emerald-400 hover:text-emerald-300 font-semibold">
+              <Link to="/register" className="text-indigo-400 hover:text-indigo-300 font-semibold transition-colors">
                 Create account
               </Link>
             </p>

@@ -91,15 +91,15 @@ const PostForm = ({ post = null, isEditing = false }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3 md:space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-5">
       {error && (
-        <div className="bg-red-100 border border-red-300 text-red-700 px-4 py-3 rounded-lg text-sm">
+        <div className="bg-red-950/20 border border-red-900 text-red-400 px-4 py-3 rounded-lg text-sm">
           {error}
         </div>
       )}
 
       <div>
-        <label htmlFor="title" className="block text-sm font-semibold mb-2">
+        <label htmlFor="title" className="block text-zinc-400 text-xs font-semibold uppercase tracking-wider mb-2">
           Title
         </label>
         <input
@@ -107,43 +107,43 @@ const PostForm = ({ post = null, isEditing = false }) => {
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="w-full border border-gray-300 rounded-xl p-3 text-base focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+          className="w-full px-4 py-3 bg-zinc-950 border border-zinc-800 text-zinc-100 placeholder:text-zinc-550 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/25 focus:border-indigo-500 text-sm transition-all duration-200"
           placeholder="Catchy title goes here..."
           required
         />
       </div>
 
       <div>
-        <label htmlFor="content" className="block text-sm font-semibold mb-2">
+        <label htmlFor="content" className="block text-zinc-400 text-xs font-semibold uppercase tracking-wider mb-2">
           Content
         </label>
         <textarea
           id="content" spellCheck="false"
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          rows="8"
-          className="w-full border border-gray-300 rounded-xl p-3 text-base focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+          rows="10"
+          className="w-full px-4 py-3 bg-zinc-950 border border-zinc-800 text-zinc-100 placeholder:text-zinc-550 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/25 focus:border-indigo-500 text-sm transition-all duration-200 resize-y min-h-[180px]"
           placeholder="Write something great..."
           required
         />
-        <p className="mt-1 text-sm text-gray-500">
+        <p className="mt-2 text-xs text-zinc-500">
           {content.length} characters •{" "}
           {content.trim().split(/\s+/).filter(Boolean).length} words
         </p>
       </div>
 
       <div>
-        <label htmlFor="image" className="block text-sm font-semibold mb-2">
+        <label htmlFor="image" className="block text-zinc-400 text-xs font-semibold uppercase tracking-wider mb-2">
           Image
         </label>
 
         {isEditing && post?.image?.url && !image && (
           <div className="mb-3">
-            <p className="text-sm text-gray-600 mb-1">Current Image:</p>
+            <p className="text-xs text-zinc-500 mb-1.5">Current Image:</p>
             <img
               src={post.image.url}
               alt="Current post"
-              className="w-40 h-28 object-cover rounded-md border border-gray-200"
+              className="w-40 h-28 object-cover rounded-lg border border-zinc-800"
             />
           </div>
         )}
@@ -153,29 +153,29 @@ const PostForm = ({ post = null, isEditing = false }) => {
           type="file"
           accept="image/*"
           onChange={(e) => setImage(e.target.files[0])}
-          className="w-full text-sm text-gray-300 cursor-pointer hover:text-gray-200"
+          className="w-full text-sm text-zinc-400 cursor-pointer file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-zinc-800 file:text-zinc-300 hover:file:bg-zinc-700 hover:file:text-white transition-all"
         />
 
         {image && (
-          <p className="text-sm mt-1 text-gray-500">Selected: {image.name}</p>
+          <p className="text-xs mt-2 text-zinc-500">Selected: {image.name}</p>
         )}
       </div>
 
       <div>
-        <label htmlFor="tags" className="block text-sm font-semibold mb-2">
-          Tags <span className="text-gray-400">(up to 5)</span>
+        <label htmlFor="tags" className="block text-zinc-400 text-xs font-semibold uppercase tracking-wider mb-2">
+          Tags <span className="text-zinc-555 lowercase">(up to 5)</span>
         </label>
-        <div className="flex flex-wrap gap-2 mb-2">
+        <div className="flex flex-wrap gap-2 mb-3">
           {tags.map((tag) => (
             <span
               key={tag}
-              className="inline-flex items-center bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-sm font-medium">
+              className="inline-flex items-center bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-lg text-xs font-semibold">
               #{tag}
               <button
                 type="button"
                 onClick={() => removeTag(tag)}
-                className="ml-1 text-emerald-600 hover:text-emerald-800">
-                <X size={14} />
+                className="ml-1.5 text-indigo-400 hover:text-indigo-200 transition-colors cursor-pointer">
+                <X size={12} />
               </button>
             </span>
           ))}
@@ -187,33 +187,33 @@ const PostForm = ({ post = null, isEditing = false }) => {
             value={tagInput}
             onChange={(e) => setTagInput(e.target.value)}
             onKeyDown={handleTagInputKeyDown}
-            placeholder="Press Enter to add"
-            className="flex-1 border border-gray-300 rounded-l-xl p-3 focus:ring-1 focus:outline-none focus:ring-emerald-300"
+            placeholder="Press Enter or comma to add tag"
+            className="flex-1 bg-zinc-950 border border-zinc-800 rounded-l-lg p-3 text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/25 transition-all"
           />
           <button
             type="button"
             onClick={addTag}
             disabled={!tagInput.trim()}
-            className="px-4 bg-emerald-600 text-white font-medium text-sm rounded-r-xl hover:bg-emerald-700 disabled:bg-gray-300 disabled:text-black disabled:cursor-not-allowed">
+            className="px-5 bg-zinc-800 border-y border-r border-zinc-800 text-zinc-200 font-semibold text-xs rounded-r-lg hover:bg-zinc-700 hover:text-white disabled:bg-zinc-900/60 disabled:text-zinc-650 disabled:cursor-not-allowed transition-all cursor-pointer">
             Add
           </button>
         </div>
-        <p className="text-sm text-gray-500 mt-1">
-          Use comma or Enter to add new tag
+        <p className="text-xs text-zinc-500 mt-2">
+          Use comma or Enter to add new tags
         </p>
       </div>
 
-      <div className="flex justify-end space-x-4 pt-4">
+      <div className="flex justify-end space-x-4 pt-4 border-t border-zinc-900 mt-6">
         <button
           type="button"
           onClick={() => navigate(-1)}
-          className="py-2 px-5 border border-gray-300 rounded-lg text-sm text-gray-600 bg-gray-50 hover:bg-gray-200 cursor-pointer">
+          className="py-2.5 px-5 border border-zinc-800 rounded-lg text-sm text-zinc-300 bg-zinc-900/40 hover:bg-zinc-800 hover:text-white transition-all cursor-pointer">
           Cancel
         </button>
         <button
           type="submit"
           disabled={isSubmitting}
-          className="py-2 px-6 bg-emerald-600 cursor-pointer text-white text-sm font-medium rounded-lg hover:bg-emerald-700 disabled:bg-emerald-400">
+          className="py-2.5 px-6 bg-zinc-100 cursor-pointer text-zinc-950 text-sm font-semibold rounded-lg hover:bg-white active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed">
           {isSubmitting
             ? "Submitting..."
             : isEditing

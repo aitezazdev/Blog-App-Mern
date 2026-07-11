@@ -67,32 +67,32 @@ const CommentsSection = ({ postId, user, initialComments = [] }) => {
   };
 
   return (
-    <div className="bg-[#1a1a1a] rounded-xl shadow-lg border border-gray-800 overflow-hidden">
-      <div className="p-6">
-        <h2 className="text-xl font-semibold text-gray-100 mb-6">
-          Comments ({comments.length || 0})
+    <div className="bg-zinc-900/40 rounded-xl shadow-xl border border-zinc-800 backdrop-blur-sm overflow-hidden">
+      <div className="p-6 md:p-8">
+        <h2 className="text-lg font-bold tracking-tight text-white mb-6">
+          Discussion ({comments.length || 0})
         </h2>
 
         {user ? (
           <form className="mb-8" onSubmit={handleSubmit}>
             <textarea spellCheck="false"
-              className="w-full px-4 py-3 bg-[#252525] border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 transition text-gray-200"
+              className="w-full px-4 py-3 bg-zinc-950 border border-zinc-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/25 focus:border-indigo-500 text-zinc-100 placeholder:text-zinc-550 text-sm transition-all duration-200 resize-none"
               rows="3"
-              placeholder="Write a comment..."
+              placeholder="Join the discussion..."
               value={commentText}
               onChange={(e) => setCommentText(e.target.value)}
               disabled={isSubmitting}
             ></textarea>
             <button 
-              className="mt-3 px-6 py-2 bg-emerald-600 hover:bg-emerald-700 cursor-pointer text-white rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
+              className="mt-3 px-5 py-2.5 bg-zinc-100 hover:bg-white text-zinc-950 font-semibold text-xs rounded-lg transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
               disabled={isSubmitting || !commentText.trim()}
             >
               {isSubmitting ? "Posting..." : "Post Comment"}
             </button>
           </form>
         ) : (
-          <div className="mb-8 p-4 bg-[#252525] rounded-lg text-center">
-            <p className="text-gray-400">Please sign in to post a comment.</p>
+          <div className="mb-8 p-5 bg-zinc-950/60 border border-zinc-800 rounded-lg text-center">
+            <p className="text-zinc-400 text-sm">Please sign in to post a comment.</p>
           </div>
         )}
 
@@ -108,8 +108,8 @@ const CommentsSection = ({ postId, user, initialComments = [] }) => {
               />
             ))
           ) : (
-            <div className="py-6 text-center text-gray-400">
-              No comments yet. Be the first to comment!
+            <div className="py-6 text-center text-zinc-500 text-sm">
+              No comments yet. Start the conversation!
             </div>
           )}
         </div>

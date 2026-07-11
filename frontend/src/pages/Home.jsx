@@ -134,18 +134,18 @@ const Home = () => {
   const renderCreatePostButton = () => (
     <Link
       to="/create-post"
-      className="fixed bottom-10 right-10 md:bottom-20 md:right-20 w-14 h-14 md:w-20 md:h-20 rounded-full bg-emerald-600 flex items-center justify-center text-white shadow-lg hover:bg-emerald-700 transition-all hover:scale-110 z-20"
+      className="fixed bottom-10 right-10 md:bottom-16 md:right-16 w-14 h-14 md:w-16 md:h-16 rounded-full bg-zinc-100 flex items-center justify-center text-zinc-950 shadow-xl hover:bg-white transition-all hover:scale-105 active:scale-95 z-20"
       title="Create Post">
       <Plus size={24} />
     </Link>
   );
 
   const renderLoadingState = () => (
-    <div className="min-h-screen pb-20 relative">
+    <div className="min-h-screen pb-20 relative bg-zinc-950">
       <HomeIntro searchData={setSearchTerm} />
       <div className="flex flex-col items-center justify-center py-20">
-        <Loader size={48} className="text-emerald-500 animate-spin" />
-        <p className="text-white text-xl mt-4">Loading posts...</p>
+        <Loader size={40} className="text-indigo-500 animate-spin" />
+        <p className="text-zinc-400 text-base mt-4">Loading posts...</p>
       </div>
       {user && renderCreatePostButton()}
     </div>

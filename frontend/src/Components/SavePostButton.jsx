@@ -8,7 +8,7 @@ const SavePostButton = ({ isSaved, toggleSavePost }) => {
   };
 
   return (
-    <div className="text-emerald-400" onClick={toggleSave}>
+    <div className="text-indigo-400 hover:text-indigo-300 transition-colors" onClick={toggleSave}>
       {isSaved ? <FaBookmark size={18} /> : <FaRegBookmark size={18} />}
     </div>
   );

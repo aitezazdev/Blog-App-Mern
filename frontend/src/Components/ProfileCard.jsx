@@ -99,11 +99,9 @@ const ProfileCard = () => {
   };
 
   const renderLoadingState = () => (
-    <div className="min-h-screen pt-20 relative">
-      <div className="flex flex-col items-center justify-center py-20">
-        <Loader size={48} className="text-emerald-500 animate-spin" />
-        <p className="text-white text-xl mt-4">Loading profile...</p>
-      </div>
+    <div className="min-h-screen pt-20 bg-zinc-950 flex flex-col justify-center items-center">
+      <Loader size={40} className="text-indigo-500 animate-spin" />
+      <p className="text-zinc-400 text-sm mt-4">Loading profile...</p>
     </div>
   );
 
@@ -113,23 +111,23 @@ const ProfileCard = () => {
 
   if (error)
     return (
-      <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-center text-red-600 max-w-md mx-auto mt-10">
-        <p>{error}</p>
+      <div className="bg-red-950/20 border border-red-900 rounded-lg p-6 text-center text-red-400 max-w-md mx-auto mt-24">
+        <p className="text-sm">{error}</p>
       </div>
     );
 
   if (!profile)
     return (
-      <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 text-center text-gray-600 max-w-md mx-auto mt-10">
+      <div className="bg-zinc-900/40 border border-zinc-800 rounded-lg p-6 text-center text-zinc-400 max-w-md mx-auto mt-24">
         No profile data available
       </div>
     );
 
   return (
-    <div className="bg-[#171616] rounded-lg shadow-xl p-6 sm:p-8 w-full max-w-2xl mx-auto mt-10 text-gray-100 border border-[#1f1e1e]">
+    <div className="bg-zinc-900/40 rounded-xl shadow-2xl p-6 sm:p-8 w-full max-w-2xl mx-auto mt-12 text-zinc-100 border border-zinc-800 backdrop-blur-sm">
       {/* Profile Header */}
       <div className="flex flex-col sm:flex-row items-center sm:items-start">
-        <div className="w-20 h-20 rounded-full bg-zinc-700 flex items-center justify-center text-white text-2xl font-bold shadow-md mb-4 sm:mb-0">
+        <div className="w-20 h-20 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center text-white text-2xl font-bold shadow-md mb-4 sm:mb-0">
           {profile.avatarUrl ? (
             <img
               src={profile.avatarUrl}
@@ -147,23 +145,23 @@ const ProfileCard = () => {
               name="name"
               value={formData.name}
               onChange={handleInputChange}
-              className="text-xl font-semibold bg-[#1f1e1e] border-b border-gray-600 focus:outline-none focus:border-emerald-500 text-white w-full px-2 py-1"
+              className="text-xl font-semibold bg-zinc-950 border border-zinc-800 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/25 text-white w-full px-3 py-1.5"
               placeholder="Your name"
             />
           ) : (
-            <h2 className="text-2xl font-semibold">{profile.name}</h2>
+            <h2 className="text-2xl font-semibold tracking-tight">{profile.name}</h2>
           )}
-          <p className="text-gray-400 flex items-center justify-center sm:justify-start mt-1">
-            <span className="inline-block w-2 h-2 rounded-full bg-green-500 mr-2"></span>
+          <p className="text-zinc-400 flex items-center justify-center sm:justify-start mt-2 text-sm">
+            <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 mr-2"></span>
             {profile.email}
           </p>
         </div>
       </div>
 
       {/* Bio Section */}
-      <div className="mt-6 bg-[#1f1e1e] rounded-lg p-4">
-        <h3 className="font-medium text-gray-300 flex items-center mb-2">
-          <UserCircle size={18} className="mr-2" />
+      <div className="mt-6 bg-zinc-900/60 border border-zinc-800 rounded-lg p-5">
+        <h3 className="font-medium text-zinc-300 flex items-center mb-3 text-sm uppercase tracking-wider">
+          <UserCircle size={18} className="mr-2 text-indigo-400" />
           About
         </h3>
         {editing ? (
@@ -171,12 +169,12 @@ const ProfileCard = () => {
             name="bio"
             value={formData.bio}
             onChange={handleInputChange}
-            className="mt-2 w-full bg-[#1f1e1e] border border-gray-600 rounded p-3 resize-none focus:outline-none focus:ring-1 focus:ring-[#1f1e1e] text-gray-100"
+            className="mt-2 w-full bg-zinc-950 border border-zinc-800 rounded-lg p-3 resize-none focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/25 text-gray-100 text-sm"
             rows="4"
             placeholder="Tell us about yourself..."
           />
         ) : (
-          <p className="mt-2 text-gray-300 leading-relaxed">
+          <p className="mt-2 text-zinc-300 leading-relaxed text-sm">
             {profile.bio || "No bio available"}
           </p>
         )}
@@ -184,45 +182,45 @@ const ProfileCard = () => {
 
       {/* Stats Section */}
       <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
-        <div className="bg-[#1f1e1e] rounded-lg p-3">
-          <p className="text-2xl font-bold text-emerald-400">
+        <div className="bg-zinc-900/60 border border-zinc-800 rounded-lg p-4">
+          <p className="text-2xl font-bold text-indigo-400">
             {profile.createdPosts.length}
           </p>
-          <p className="text-xs uppercase tracking-wider text-gray-400 mt-1">
+          <p className="text-xs uppercase tracking-widest text-zinc-500 mt-1">
             Posts
           </p>
         </div>
 
-        <div className="bg-[#1f1e1e] rounded-lg p-3">
-          <p className="text-2xl font-bold text-purple-400">
+        <div className="bg-zinc-900/60 border border-zinc-800 rounded-lg p-4">
+          <p className="text-2xl font-bold text-violet-400">
             {profile.savedPosts.length}
           </p>
-          <p className="text-xs uppercase tracking-wider text-gray-400 mt-1">
+          <p className="text-xs uppercase tracking-widest text-zinc-500 mt-1">
             Saved
           </p>
         </div>
 
-        <div className="bg-[#1f1e1e] rounded-lg p-3">
-          <p className="text-sm font-semibold text-gray-300">
+        <div className="bg-zinc-900/60 border border-zinc-800 rounded-lg p-4 flex flex-col justify-center">
+          <p className="text-sm font-semibold text-zinc-300">
             {new Date(profile.createdAt).toLocaleDateString("en-US", {
               year: "numeric",
               month: "short",
             })}
           </p>
-          <p className="text-xs uppercase tracking-wider text-gray-400 mt-1">
+          <p className="text-xs uppercase tracking-widest text-zinc-500 mt-1">
             Joined
           </p>
         </div>
       </div>
 
       {/* Action Buttons */}
-      <div className="mt-8 pt-4 border-t border-gray-700 flex flex-col sm:flex-row justify-between gap-4">
+      <div className="mt-8 pt-6 border-t border-zinc-800 flex flex-col sm:flex-row justify-between gap-4">
         {editing ? (
           <div className="flex flex-col sm:flex-row gap-3">
             <button
               onClick={handleUpdateProfile}
               disabled={loading}
-              className="bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 flex items-center justify-center transition duration-150 disabled:opacity-50">
+              className="bg-indigo-600 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-indigo-500 flex items-center justify-center transition disabled:opacity-50 cursor-pointer">
               {loading ? (
                 <>
                   <Loader size={16} className="animate-spin mr-2" />
@@ -237,7 +235,7 @@ const ProfileCard = () => {
             </button>
             <button
               onClick={() => setEditing(false)}
-              className="bg-gray-700 text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-600 flex items-center justify-center transition duration-150">
+              className="bg-zinc-800 text-zinc-300 text-sm font-medium px-4 py-2 rounded-lg hover:bg-zinc-700 flex items-center justify-center border border-zinc-700 transition cursor-pointer">
               <X size={16} className="mr-2" />
               Cancel
             </button>
@@ -245,7 +243,7 @@ const ProfileCard = () => {
         ) : (
           <button
             onClick={() => setEditing(true)}
-            className="bg-[#1f1e1e] text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-700 flex items-center justify-center transition duration-150">
+            className="bg-zinc-800 text-zinc-300 text-sm font-medium px-4 py-2 rounded-lg hover:bg-zinc-700 flex items-center justify-center border border-zinc-700 transition cursor-pointer">
             <Edit2 size={16} className="mr-2" />
             Edit Profile
           </button>
@@ -254,8 +252,8 @@ const ProfileCard = () => {
         <button
           onClick={confirmDelete}
           disabled={isDeleting}
-          className="text-red-400 hover:text-red-300 flex items-center justify-center transition duration-150 disabled:opacity-50">
-          <Trash2 size={16} className="mr-1" />
+          className="text-red-400 hover:text-red-300 flex items-center justify-center text-sm transition disabled:opacity-50 cursor-pointer">
+          <Trash2 size={16} className="mr-1.5" />
           {isDeleting ? "Deleting..." : "Delete Account"}
         </button>
       </div>

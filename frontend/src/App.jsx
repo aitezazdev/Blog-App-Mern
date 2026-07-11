@@ -19,7 +19,7 @@ import Contact from "./pages/Contact";
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#0f0f0f]">
+    <div className="min-h-screen bg-zinc-950 text-zinc-100">
       <GoToTop />
       <Toaster />
       <ToastContainer />

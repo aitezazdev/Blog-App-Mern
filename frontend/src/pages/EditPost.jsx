@@ -33,20 +33,20 @@ const EditPostPage = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-emerald-500"></div>
+      <div className="flex justify-center items-center min-h-screen bg-zinc-950">
+        <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-indigo-500"></div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="max-w-xl mx-auto mt-16 bg-red-50 border border-red-200 rounded-xl p-6 shadow">
-        <h2 className="text-2xl font-bold text-red-700 mb-2">Something went wrong</h2>
-        <p className="text-red-600">{error}</p>
+      <div className="max-w-xl mx-auto mt-24 bg-red-950/20 border border-red-900 rounded-lg p-6 shadow text-center">
+        <h2 className="text-xl font-bold text-red-400 mb-2">Something went wrong</h2>
+        <p className="text-zinc-400 text-sm">{error}</p>
         <button 
           onClick={() => navigate(-1)} 
-          className="mt-4 px-4 py-2 bg-red-100 text-red-700 rounded-md hover:bg-red-200 transition"
+          className="mt-6 px-4 py-2 text-sm bg-red-900/30 text-red-200 border border-red-800 rounded-lg hover:bg-red-900/50 transition cursor-pointer"
         >
           ← Go Back
         </button>
@@ -55,10 +55,10 @@ const EditPostPage = () => {
   }
 
   return (
-    <div className="flex justify-center px-4 py-12">
-      <div className="w-full max-w-2xl bg-[#201f1f] text-white p-8">
-        <h1 className="text-3xl font-bold mb-6">Edit Post</h1>
-        <div className="rounded-xl shadow-md p-6">
+    <div className="flex justify-center px-4 py-24 bg-zinc-950 min-h-screen">
+      <div className="w-full max-w-2xl bg-zinc-900/40 border border-zinc-800 text-zinc-100 p-6 md:p-10 rounded-xl backdrop-blur-sm shadow-2xl">
+        <h1 className="text-2xl md:text-3xl font-bold tracking-tight mb-8">Edit Post</h1>
+        <div>
           {post && <PostForm post={post} isEditing={true} />}
         </div>
       </div>

@@ -69,7 +69,7 @@ const PostCard = ({
   };
 
   return (
-    <div className="bg-[#202020] rounded-2xl shadow-md hover:shadow-emerald-500/30 transition-all duration-300 border border-[#1e1e1e] overflow-hidden flex flex-col h-[450px]">
+    <div className="bg-zinc-900/40 rounded-xl hover:shadow-2xl hover:shadow-indigo-500/5 hover:border-zinc-700 transition-all duration-300 border border-zinc-800 overflow-hidden flex flex-col h-[450px]">
       {post.image && (
         <Link to={`/post/${post._id}`} className="h-56 flex-shrink-0">
           <img
@@ -80,11 +80,11 @@ const PostCard = ({
         </Link>
       )}
 
-      <div className="p-4 flex flex-col flex-grow justify-between">
+      <div className="p-5 flex flex-col flex-grow justify-between">
         <div className="flex justify-between items-start mb-1">
           <Link
             to={`/post/${post._id}`}
-            className="text-2xl py-1 font-semibold text-white hover:text-emerald-400 transition-colors line-clamp-2"
+            className="text-xl py-1 font-bold text-zinc-100 hover:text-indigo-400 transition-colors line-clamp-2 tracking-tight"
           >
             {getTruncatedContent(post.title, 4)}
           </Link>
@@ -92,7 +92,7 @@ const PostCard = ({
           {isAuthor && (
             <div className="relative" ref={menuRef}>
               <button
-                className="text-gray-400 hover:text-gray-200 rounded-full cursor-pointer"
+                className="text-zinc-400 hover:text-white rounded-full cursor-pointer p-1 transition-colors"
                 onClick={() => setShowMenu(!showMenu)}
                 disabled={isDeleting}
               >
@@ -100,18 +100,18 @@ const PostCard = ({
               </button>
 
               {showMenu && (
-                <div className="absolute right-0 mt-2 w-48 bg-[#1f1f1f] text-white rounded-md shadow-lg z-10 border border-[#2a2a2a]">
+                <div className="absolute right-0 mt-2 w-48 bg-zinc-950 text-zinc-100 rounded-lg shadow-xl z-10 border border-zinc-800">
                   <div className="py-1">
                     <button
                       onClick={handleEditPost}
-                      className="w-full text-left px-4 py-2 text-sm hover:bg-[#2a2a2a] flex items-center gap-2"
+                      className="w-full text-left px-4 py-2.5 text-sm hover:bg-zinc-900 flex items-center gap-2 transition-colors cursor-pointer"
                     >
                       <FaEdit /> Edit Post
                     </button>
                     <button
                       onClick={handleDeletePost}
                       disabled={isDeleting}
-                      className="w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-[#2a2a2a] flex items-center gap-2"
+                      className="w-full text-left px-4 py-2.5 text-sm text-red-400 hover:bg-zinc-900 flex items-center gap-2 transition-colors cursor-pointer"
                     >
                       <FaTrash /> {isDeleting ? "Deleting..." : "Delete Post"}
                     </button>
@@ -124,7 +124,7 @@ const PostCard = ({
 
         <Link
           to={`/post/${post._id}`}
-          className="text-gray-300 mb-2 line-clamp-2 hover:text-gray-100 transition pb-2 h-12 overflow-hidden"
+          className="text-zinc-400 text-sm mb-2 line-clamp-2 hover:text-zinc-200 transition pb-2 h-12 overflow-hidden leading-relaxed"
         >
           {getTruncatedContent(post.content, 7)}
         </Link>
@@ -132,17 +132,17 @@ const PostCard = ({
         <div className="flex flex-col flex-grow">
           <div>
             {post.tags?.length > 0 && (
-              <div className="flex flex-wrap gap-1 mb-3">
+              <div className="flex flex-wrap gap-1.5 mb-3">
                 {post.tags.slice(0, 3).map((tag, index) => (
                   <span
                     key={index}
-                    className="text-xs bg-[#2a2a2a] text-emerald-400 px-2 py-0.5 rounded-md hover:bg-emerald-900/30 transition-colors flex items-center gap-1"
+                    className="text-xs bg-indigo-500/10 text-indigo-400 px-2 py-0.5 rounded hover:bg-indigo-500/20 transition-colors flex items-center gap-1"
                   >
                     # {tag}
                   </span>
                 ))}
                 {post.tags.length > 3 && (
-                  <span className="text-xs text-gray-400">
+                  <span className="text-xs text-zinc-500">
                     +{post.tags.length - 3}
                   </span>
                 )}
@@ -151,17 +151,17 @@ const PostCard = ({
           </div>
 
           <div className="flex flex-col">
-            <div className="text-xs text-gray-500 mb-2">
+            <div className="text-xs text-zinc-500 mb-2">
               Posted by{" "}
-              <span className="font-medium text-white">
+              <span className="font-medium text-zinc-300">
                 {post.author?.name || "Unknown"}
               </span>{" "}
               on {formattedDate}
             </div>
 
-            <div className="flex justify-between items-center pt-2 border-t border-gray-700">
-              <div className="flex items-center gap-4 text-gray-400">
-                <div className="flex items-center gap-1 cursor-pointer hover:text-red-500 transition">
+            <div className="flex justify-between items-center pt-3 border-t border-zinc-800">
+              <div className="flex items-center gap-4 text-zinc-400">
+                <div className="flex items-center gap-1 cursor-pointer hover:text-red-500 transition-colors">
                   <SaveLikeButton
                     post={post}
                     isLiked={isLiked}
@@ -170,13 +170,13 @@ const PostCard = ({
                 </div>
                 <Link
                   to={`/post/${post._id}`}
-                  className="flex items-center gap-1 cursor-pointer hover:text-emerald-400 transition"
+                  className="flex items-center gap-1 cursor-pointer hover:text-indigo-400 transition-colors"
                 >
                   <FaRegCommentDots />
                   <span className="text-sm">{post.comments?.length || 0}</span>
                 </Link>
               </div>
-              <div className="cursor-pointer text-gray-400 hover:text-emerald-500 transition">
+              <div className="cursor-pointer text-zinc-400 hover:text-indigo-400 transition-colors">
                 <SavePostButton
                   post={post}
                   isSaved={isSaved}

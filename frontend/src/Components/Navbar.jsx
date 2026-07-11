@@ -30,18 +30,18 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 md:px-24 text-white bg-black p-5 transition-all duration-300">
-        <div className="container mx-auto flex justify-between items-center">
-          <NavLink to="/" className="text-xl font-bold">
-            ZazBlog
+      <nav className="fixed top-0 left-0 right-0 z-50 text-white bg-zinc-950/90 backdrop-blur-md border-b border-zinc-900 px-6 py-4 transition-all duration-300">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <NavLink to="/" className="text-xl font-bold tracking-tight hover:opacity-90 transition-opacity">
+            ZazBlog<span className="text-indigo-500">.</span>
           </NavLink>
 
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-8">
             <NavLink
               to="/"
               className={({ isActive }) => 
-                `px-1 transition-colors ${
-                  isActive ? "text-white border-b-2 border-b-emerald-300" : "text-gray-300 hover:text-white"
+                `text-sm font-medium transition-colors py-1 ${
+                  isActive ? "text-white border-b-2 border-indigo-500" : "text-zinc-400 hover:text-white"
                 }`
               }
             >
@@ -51,17 +51,19 @@ const Navbar = () => {
             <NavLink
               to="/about"
               className={({ isActive }) => 
-                `px-1 transition-colors ${
-                  isActive ? "text-white border-b-2 border-b-emerald-300" : "text-gray-300 hover:text-white"
+                `text-sm font-medium transition-colors py-1 ${
+                  isActive ? "text-white border-b-2 border-indigo-500" : "text-zinc-400 hover:text-white"
                 }`
               }
             >
               About
-            </NavLink><NavLink
+            </NavLink>
+
+            <NavLink
               to="/contact"
               className={({ isActive }) => 
-                `px-1 transition-colors ${
-                  isActive ? "text-white border-b-2 border-b-emerald-300" : "text-gray-300 hover:text-white"
+                `text-sm font-medium transition-colors py-1 ${
+                  isActive ? "text-white border-b-2 border-indigo-500" : "text-zinc-400 hover:text-white"
                 }`
               }
             >
@@ -73,8 +75,8 @@ const Navbar = () => {
                 <NavLink
                   to="/saved-posts"
                   className={({ isActive }) => 
-                    `px-1 transition-colors ${
-                      isActive ? "text-white border-b-2 border-b-emerald-300" : "text-gray-300 hover:text-white"
+                    `text-sm font-medium transition-colors py-1 ${
+                      isActive ? "text-white border-b-2 border-indigo-500" : "text-zinc-400 hover:text-white"
                     }`
                   }
                 >
@@ -82,15 +84,15 @@ const Navbar = () => {
                 </NavLink>
                 <button
                   onClick={handleLogout}
-                  className="text-gray-300 hover:text-white transition-colors"
+                  className="text-sm font-medium text-zinc-400 hover:text-white transition-colors cursor-pointer"
                 >
                   Logout
                 </button>
                 <NavLink
                   to="/profile"
                   className={({ isActive }) => 
-                    `w-9 h-9 rounded-full bg-blue-500 flex items-center justify-center text-white font-medium transition-transform hover:scale-105 ${
-                      isActive ? "ring-2 ring-emerald-300" : ""
+                    `w-8 h-8 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center text-zinc-100 text-xs font-semibold tracking-wide transition-all hover:scale-105 hover:border-indigo-500 ${
+                      isActive ? "ring-2 ring-indigo-500/50 border-indigo-500" : ""
                     }`
                   }
                   title={user?.name || "Profile"}
@@ -103,8 +105,8 @@ const Navbar = () => {
                 <NavLink
                   to="/login"
                   className={({ isActive }) => 
-                    `px-1 transition-colors ${
-                      isActive ? "text-white border-b-2 border-b-emerald-300" : "text-gray-300 hover:text-white"
+                    `text-sm font-medium transition-colors py-1 ${
+                      isActive ? "text-white border-b-2 border-indigo-500" : "text-zinc-400 hover:text-white"
                     }`
                   }
                 >
@@ -113,9 +115,7 @@ const Navbar = () => {
                 <NavLink
                   to="/register"
                   className={({ isActive }) => 
-                    `px-1 transition-colors ${
-                      isActive ? "text-white border-b-2 border-b-emerald-300" : "text-gray-300 hover:text-white"
-                    }`
+                    `px-4 py-2 text-sm font-medium rounded-lg bg-zinc-100 text-zinc-950 hover:bg-zinc-200 transition-all hover:scale-[1.02] active:scale-[0.98]`
                   }
                 >
                   Register
@@ -126,30 +126,31 @@ const Navbar = () => {
 
           {/* phone view */}
           <div className="md:hidden">
-            <button onClick={() => setMenuOpen(true)}>
-              <FaBars className="w-6 h-6 text-white" />
+            <button onClick={() => setMenuOpen(true)} className="p-1 text-zinc-400 hover:text-white transition-colors cursor-pointer">
+              <FaBars className="w-6 h-6" />
             </button>
           </div>
         </div>
       </nav>
 
+      {/* Mobile drawer */}
       <div
-        className={`fixed top-0 right-0 h-full w-[70%] bg-black/70 backdrop-blur-lg z-50 p-6 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 right-0 h-full w-[280px] bg-zinc-950/95 border-l border-zinc-900 backdrop-blur-lg z-50 p-6 transform transition-transform duration-300 ease-in-out ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         } md:hidden`}
       >
         <button
           onClick={() => setMenuOpen(false)}
-          className="absolute top-4 right-4 text-white"
+          className="absolute top-4 right-4 text-zinc-400 hover:text-white transition-colors cursor-pointer"
         >
           <FaTimes className="w-6 h-6" />
         </button>
-        <div className="flex flex-col space-y-6 mt-10">
+        <div className="flex flex-col space-y-6 mt-12">
           <NavLink 
             to="/" 
             onClick={() => setMenuOpen(false)} 
             className={({ isActive }) => 
-              `text-white ${isActive ? "font-semibold text-emerald-400" : ""}`
+              `text-base font-medium transition-colors ${isActive ? "text-indigo-400" : "text-zinc-300 hover:text-white"}`
             }
           >
             Home
@@ -158,7 +159,7 @@ const Navbar = () => {
             to="/about" 
             onClick={() => setMenuOpen(false)} 
             className={({ isActive }) => 
-              `text-white ${isActive ? "font-semibold text-emerald-400" : ""}`
+              `text-base font-medium transition-colors ${isActive ? "text-indigo-400" : "text-zinc-300 hover:text-white"}`
             }
           >
             About
@@ -167,7 +168,7 @@ const Navbar = () => {
             to="/contact" 
             onClick={() => setMenuOpen(false)} 
             className={({ isActive }) => 
-              `text-white ${isActive ? "font-semibold text-emerald-400" : ""}`
+              `text-base font-medium transition-colors ${isActive ? "text-indigo-400" : "text-zinc-300 hover:text-white"}`
             }
           >
             Contact
@@ -178,22 +179,22 @@ const Navbar = () => {
                 to="/saved-posts"
                 onClick={() => setMenuOpen(false)}
                 className={({ isActive }) => 
-                  `text-white ${isActive ? "font-semibold text-emerald-400" : ""}`
+                  `text-base font-medium transition-colors ${isActive ? "text-indigo-400" : "text-zinc-300 hover:text-white"}`
                 }
               >
                 Saved Posts
               </NavLink>
-              <button onClick={handleLogout} className="text-white text-left">
+              <button onClick={handleLogout} className="text-base font-medium text-zinc-300 hover:text-white text-left cursor-pointer">
                 Logout
               </button>
               <NavLink
                 to="/profile"
                 onClick={() => setMenuOpen(false)}
                 className={({ isActive }) => 
-                  `text-white font-semibold ${isActive ? "text-emerald-400" : ""}`
+                  `text-base font-medium transition-colors ${isActive ? "text-indigo-400" : "text-zinc-300 hover:text-white"}`
                 }
               >
-                {user.name}
+                Profile ({user.name})
               </NavLink>
             </>
           ) : (
@@ -202,7 +203,7 @@ const Navbar = () => {
                 to="/login"
                 onClick={() => setMenuOpen(false)}
                 className={({ isActive }) => 
-                  `text-white ${isActive ? "font-semibold text-emerald-400" : ""}`
+                  `text-base font-medium transition-colors ${isActive ? "text-indigo-400" : "text-zinc-300 hover:text-white"}`
                 }
               >
                 Login
@@ -210,9 +211,7 @@ const Navbar = () => {
               <NavLink
                 to="/register"
                 onClick={() => setMenuOpen(false)}
-                className={({ isActive }) => 
-                  `text-white ${isActive ? "font-semibold text-emerald-400" : ""}`
-                }
+                className="px-4 py-2.5 text-center text-sm font-medium rounded-lg bg-zinc-100 text-zinc-950 hover:bg-zinc-200 transition-colors"
               >
                 Register
               </NavLink>
@@ -221,7 +220,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className="pt-16"></div>
+      <div className="pt-20"></div>
     </>
   );
 };

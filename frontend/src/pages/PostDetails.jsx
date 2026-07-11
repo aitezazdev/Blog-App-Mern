@@ -113,13 +113,11 @@ const PostDetails = () => {
   };
 
   const renderLoadingState = () => (
-    <div className="min-h-screen pt-20 relative">
-       <div className="flex flex-col items-center justify-center py-20">
-         <Loader size={48} className="text-emerald-500 animate-spin" />
-         <p className="text-white text-xl mt-4">Loading post details...</p>
-       </div>
-     </div>
-   );
+    <div className="min-h-screen pt-20 bg-zinc-950 flex flex-col justify-center items-center">
+      <Loader size={40} className="text-indigo-500 animate-spin" />
+      <p className="text-zinc-400 text-sm mt-4">Loading article...</p>
+    </div>
+  );
 
   if (loading) {
     return renderLoadingState();
@@ -127,8 +125,8 @@ const PostDetails = () => {
 
   if (!post) {
     return (
-      <div className="flex justify-center items-center min-h-screen bg-[#0f0f0f] text-gray-300">
-        <div className="text-xl">Post not found</div>
+      <div className="flex justify-center items-center min-h-screen bg-zinc-950 text-zinc-450">
+        <div className="text-lg">Article not found</div>
       </div>
     );
   }
@@ -140,33 +138,43 @@ const PostDetails = () => {
   });
 
   return (
-    <div className="max-w-3xl mx-auto py-8 px-4 bg-[#0f0f0f] text-gray-200">
-      <div className="bg-[#1a1a1a] rounded-xl shadow-lg border border-gray-800 overflow-hidden mb-8">
-        <div className="p-6">
-          <div className="flex justify-between items-start mb-4">
-            <h1 className="text-3xl font-semibold text-gray-100">
+    <div className="max-w-3xl mx-auto py-12 px-4 sm:px-6 bg-zinc-950 text-zinc-200">
+      <div className="bg-zinc-900/40 rounded-xl shadow-xl border border-zinc-800/80 overflow-hidden mb-8">
+        {post.image?.url && (
+          <div className="w-full h-64 md:h-[400px] overflow-hidden">
+            <img
+              src={post.image.url}
+              alt={post.title}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        )}
+        
+        <div className="p-6 md:p-10">
+          <div className="flex justify-between items-start mb-4 gap-4">
+            <h1 className="text-2xl md:text-4xl font-extrabold tracking-tight text-white leading-tight">
               {post.title}
             </h1>
 
             {isAuthor && (
-              <div className="relative" ref={menuRef}>
+              <div className="relative flex-shrink-0" ref={menuRef}>
                 <button
-                  className="text-gray-400 hover:text-emerald-400 p-1 rounded-full"
+                  className="text-zinc-400 hover:text-white p-1.5 rounded-full hover:bg-zinc-800 transition"
                   onClick={() => setShowMenu(!showMenu)}>
                   <FaEllipsisV />
                 </button>
 
                 {showMenu && (
-                  <div className="absolute right-0 mt-2 w-48 bg-[#252525] rounded-md shadow-lg z-10 border border-gray-700">
+                  <div className="absolute right-0 mt-2 w-48 bg-zinc-950 rounded-lg shadow-xl z-10 border border-zinc-800">
                     <div className="py-1">
                       <button
                         onClick={handleEditPost}
-                        className="w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-[#333333] flex items-center gap-2">
+                        className="w-full text-left px-4 py-2.5 text-sm text-zinc-300 hover:bg-zinc-900 flex items-center gap-2 transition cursor-pointer">
                         <FaEdit /> Edit Post
                       </button>
                       <button
                         onClick={handleDeletePost}
-                        className="w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-[#333333] flex items-center gap-2">
+                        className="w-full text-left px-4 py-2.5 text-sm text-red-400 hover:bg-zinc-900 flex items-center gap-2 transition cursor-pointer">
                         <FaTrash /> Delete Post
                       </button>
                     </div>
@@ -176,37 +184,50 @@ const PostDetails = () => {
             )}
           </div>
 
-          <div className="flex items-center gap-2 mb-5">
-            <span className="text-sm text-gray-400">
+          <div className="flex items-center gap-2 mb-6 text-sm text-zinc-500">
+            <span>
               Posted by{" "}
-              <span className="font-medium text-emerald-400">
+              <span className="font-semibold text-indigo-400">
                 {post.author?.name || "Unknown"}
               </span>{" "}
               on {formattedDate}
             </span>
           </div>
 
-          <div className="text-gray-300 mb-6 leading-relaxed">
-            <p>{post.content}</p>
+          <div className="text-zinc-300 mb-8 leading-relaxed text-base md:text-lg whitespace-pre-wrap">
+            {post.content}
           </div>
 
-          <div className="pt-4 border-t border-gray-800">
+          {post.tags?.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-8">
+              {post.tags.map((tag, index) => (
+                <span
+                  key={index}
+                  className="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-md"
+                >
+                  # {tag}
+                </span>
+              ))}
+            </div>
+          )}
+
+          <div className="pt-6 border-t border-zinc-800">
             <div className="flex justify-between items-center">
               <div
                 className="flex items-center gap-2 cursor-pointer"
                 onClick={toggleLikePost}>
                 {isPostLiked() ? (
                   <div className="flex items-center text-red-500">
-                    <FaHeart className="mr-1" />
-                    <span className="text-sm">
+                    <FaHeart className="mr-1.5" />
+                    <span className="text-sm font-medium">
                       {post.likes?.length || 0}{" "}
                       {post.likes?.length === 1 ? "like" : "likes"}
                     </span>
                   </div>
                 ) : (
-                  <div className="flex items-center text-gray-400 hover:text-red-500 transition">
-                    <FaRegHeart className="mr-1" />
-                    <span className="text-sm">
+                  <div className="flex items-center text-zinc-400 hover:text-red-500 transition duration-150">
+                    <FaRegHeart className="mr-1.5" />
+                    <span className="text-sm font-medium">
                       {post.likes?.length || 0}{" "}
                       {post.likes?.length === 1 ? "like" : "likes"}
                     </span>
@@ -215,10 +236,10 @@ const PostDetails = () => {
               </div>
 
               <div
-                className="cursor-pointer text-gray-400 hover:text-emerald-400 transition"
+                className="cursor-pointer text-zinc-400 hover:text-indigo-400 transition duration-150"
                 onClick={toggleSave}>
                 {isPostSaved() ? (
-                  <FaBookmark size={18} className="text-emerald-400" />
+                  <FaBookmark size={18} className="text-indigo-400" />
                 ) : (
                   <FaRegBookmark size={18} />
                 )}

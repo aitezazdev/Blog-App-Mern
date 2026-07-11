@@ -30,19 +30,13 @@ export default function Contact() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-6 py-16">
-      <h1 className="text-3xl md:text-4xl font-bold mb-6 text-gray-200">
-        Get in Touch
+    <div className="max-w-2xl mx-auto px-6 py-20 md:py-28">
+      <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-8 text-white">
+        Get in Touch<span className="text-indigo-500">.</span>
       </h1>
 
-      <p className="text-base  md:text-lg text-gray-300 leading-relaxed mb-8">
-        Have a feature idea? Want to suggest improvements? Found a bug? Or maybe
-        you're just here to say something nice — we'd love to hear from you.
-        <br />
-        <br />
-        Whether it's collaboration opportunities, feedback on existing content,
-        or just a suggestion to make ZazBlog better, your message is always
-        welcome.
+      <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-10">
+        Have a feature idea, feedback, or a question? Drop us a line. We are always open to collaboration, technical queries, or ideas to refine ZazBlog.
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-6">
@@ -51,42 +45,43 @@ export default function Contact() {
             autoComplete="off"
             type="text"
             name="name"
-            placeholder="Your Name"
+            placeholder="Your name"
             autoCorrect="off"
             onChange={handleChange}
-            className="w-full placeholder:text-gray-500 text-gray-200 p-3 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
-            
+            className="w-full px-4 py-3 bg-zinc-900/60 border border-zinc-800 text-zinc-100 placeholder:text-zinc-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200"
           />
-          {errors.name && <span className="text-red-600">{errors.name}</span>}
+          {errors.name && <span className="text-red-400 text-xs mt-1">{errors.name}</span>}
         </div>
+
         <div className="flex flex-col space-y-1">
-        <input
-          autoComplete="off"
-          type="email"
-          name="email"
-          placeholder="Your Email"
-          autoCorrect="off"
-          onChange={handleChange}
-          className="w-full placeholder:text-gray-500 text-gray-200 p-3 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
-          
-        />
-          {errors.email && <span className="text-red-600">{errors.email}</span>}
+          <input
+            autoComplete="off"
+            type="email"
+            name="email"
+            placeholder="Email address"
+            autoCorrect="off"
+            onChange={handleChange}
+            className="w-full px-4 py-3 bg-zinc-900/60 border border-zinc-800 text-zinc-100 placeholder:text-zinc-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200"
+          />
+          {errors.email && <span className="text-red-400 text-xs mt-1">{errors.email}</span>}
         </div>
+
         <div className="flex flex-col space-y-1">
-        <textarea
-          name="message"
-          placeholder="Your Message — feedback, ideas, bugs, or anything else"
-          rows="6"
-          autoCorrect="off"
-          onChange={handleChange}
-          className="w-full placeholder:text-gray-500 text-gray-200 p-3 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
-          
-        />
-          {errors.message && <span className="text-red-600">{errors.message}</span>}
+          <textarea
+            name="message"
+            placeholder="Your message — ideas, feedback, bug reports, or inquiries"
+            rows="6"
+            autoCorrect="off"
+            onChange={handleChange}
+            className="w-full px-4 py-3 bg-zinc-900/60 border border-zinc-800 text-zinc-100 placeholder:text-zinc-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200 resize-y min-h-[120px]"
+          />
+          {errors.message && <span className="text-red-400 text-xs mt-1">{errors.message}</span>}
         </div>
+
         <button
           type="submit"
-          className="bg-emerald-600 hover:bg-emerald-700 cursor-pointer text-white py-3 px-6 rounded-lg transition">
+          className="w-full sm:w-auto bg-zinc-100 hover:bg-white text-zinc-950 font-medium py-3 px-6 rounded-lg transition-all active:scale-[0.98] cursor-pointer inline-flex items-center justify-center text-sm"
+        >
           Send Message
         </button>
       </form>
