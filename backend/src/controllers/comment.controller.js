@@ -1,7 +1,7 @@
 import Comment from "../models/comment.model.js";
 import Post from "../models/post.model.js";
 
-// add comment
+
 const addComment = async (req, res) => {
   try {
     const { content } = req.body;
@@ -39,7 +39,7 @@ const addComment = async (req, res) => {
   }
 };
 
-// edit comment
+
 const editComment = async (req, res) => {
   try {
     const comment = await Comment.findById(req.params.commentId);
@@ -69,7 +69,7 @@ const editComment = async (req, res) => {
   }
 };
 
-// delete comment
+
 const deleteComment = async (req, res) => {
   try {
     const comment = await Comment.findById(req.params.commentId);
@@ -105,7 +105,7 @@ const deleteComment = async (req, res) => {
   }
 };
 
-// comments for a post
+
 const getCommentsForPost = async (req, res) => {
   try {
     const comments = await Comment.find({ post: req.params.postId })

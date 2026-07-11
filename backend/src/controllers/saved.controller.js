@@ -1,7 +1,7 @@
 import User from "../models/user.model.js";
 import Post from "../models/post.model.js";
 
-// toggle save
+
 const togglePostSave = async (req, res) => {
   try {
     const postId = req.params.id;
@@ -51,7 +51,7 @@ const togglePostSave = async (req, res) => {
 };
 
 
-// all saved posts
+
 const getSavedPosts = async (req, res) => {
   try {
     const user = await User.findById(req.user.id).populate("savedPosts");

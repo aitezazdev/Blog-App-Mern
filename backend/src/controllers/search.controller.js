@@ -1,7 +1,7 @@
 import Post from "../models/post.model.js";
 import User from "../models/user.model.js";
 
-// search posts
+
 const searchPosts = async (req, res) => {
   try {
     const { query } = req.query;

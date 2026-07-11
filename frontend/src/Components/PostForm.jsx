@@ -213,7 +213,10 @@ const PostForm = ({ post = null, isEditing = false }) => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="py-2.5 px-6 bg-zinc-100 cursor-pointer text-zinc-950 text-sm font-semibold rounded-lg hover:bg-white active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed">
+          className="py-2.5 px-6 bg-zinc-100 cursor-pointer text-zinc-950 text-sm font-semibold rounded-lg hover:bg-white active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+          {isSubmitting && (
+            <div className="h-4 w-4 border-2 border-zinc-950 border-t-transparent rounded-full animate-spin"></div>
+          )}
           {isSubmitting
             ? "Submitting..."
             : isEditing

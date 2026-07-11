@@ -125,7 +125,7 @@ const ProfileCard = () => {
 
   return (
     <div className="bg-zinc-900/40 rounded-xl shadow-2xl p-6 sm:p-8 w-full max-w-2xl mx-auto mt-12 text-zinc-100 border border-zinc-800 backdrop-blur-sm">
-      {/* Profile Header */}
+      {}
       <div className="flex flex-col sm:flex-row items-center sm:items-start">
         <div className="w-20 h-20 rounded-full bg-zinc-800 border border-zinc-800 flex items-center justify-center text-white text-2xl font-bold shadow-md mb-4 sm:mb-0">
           {profile.avatarUrl ? (
@@ -158,7 +158,7 @@ const ProfileCard = () => {
         </div>
       </div>
 
-      {/* Bio Section */}
+      {}
       <div className="mt-6 bg-zinc-900/60 border border-zinc-800 rounded-lg p-5">
         <h3 className="font-medium text-zinc-300 flex items-center mb-3 text-sm uppercase tracking-wider">
           <UserCircle size={18} className="mr-2 text-orange-600" />
@@ -180,7 +180,7 @@ const ProfileCard = () => {
         )}
       </div>
 
-      {/* Stats Section */}
+      {}
       <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
         <div className="bg-zinc-900/60 border border-zinc-800 rounded-lg p-4">
           <p className="text-2xl font-bold text-orange-600">
@@ -213,7 +213,7 @@ const ProfileCard = () => {
         </div>
       </div>
 
-      {/* Action Buttons */}
+      {}
       <div className="mt-8 pt-6 border-t border-zinc-800 flex flex-col sm:flex-row justify-between gap-4">
         {editing ? (
           <div className="flex flex-col sm:flex-row gap-3">

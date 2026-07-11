@@ -124,7 +124,7 @@ const Navbar = () => {
             )}
           </div>
 
-          {/* phone view */}
+          {}
           <div className="md:hidden">
             <button onClick={() => setMenuOpen(true)} className="p-1 text-zinc-400 hover:text-white transition-colors cursor-pointer">
               <FaBars className="w-6 h-6" />
@@ -133,7 +133,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile drawer */}
+      {}
       <div
         className={`fixed top-0 right-0 h-full w-[280px] bg-zinc-950/95 border-l border-zinc-900 backdrop-blur-lg z-50 p-6 transform transition-transform duration-300 ease-in-out ${
           menuOpen ? "translate-x-0" : "translate-x-full"

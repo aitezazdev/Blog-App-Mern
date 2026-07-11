@@ -2,7 +2,7 @@ import Post from "../models/post.model.js";
 import User from "../models/user.model.js";
 import Comment from '../models/comment.model.js';
 
-// view profile
+
 const viewProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-password");
@@ -23,7 +23,7 @@ const viewProfile = async (req, res) => {
   }
 };
 
-// update profile
+
 const updateProfile = async (req, res) => {
   try {
     const { name, bio } = req.body.profileData;
@@ -50,7 +50,7 @@ const updateProfile = async (req, res) => {
   }
 };
 
-// delete account
+
 const deleteAccount = async (req, res) => {
   try {
     const userId = req.user.id;
