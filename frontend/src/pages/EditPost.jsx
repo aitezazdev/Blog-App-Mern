@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { getPostById } from '../api/postsApi';
 import { toast } from 'react-hot-toast';
 import PostForm from '../Components/PostForm';
+import { Loader } from 'lucide-react';
 
 const EditPostPage = () => {
   const { id } = useParams();
@@ -34,7 +35,7 @@ const EditPostPage = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-screen bg-zinc-950">
-        <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-indigo-500"></div>
+        <Loader size={40} className="text-orange-600 animate-spin" />
       </div>
     );
   }

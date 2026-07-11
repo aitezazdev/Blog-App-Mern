@@ -107,7 +107,7 @@ const PostForm = ({ post = null, isEditing = false }) => {
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="w-full px-4 py-3 bg-zinc-950 border border-zinc-800 text-zinc-100 placeholder:text-zinc-550 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/25 focus:border-indigo-500 text-sm transition-all duration-200"
+          className="w-full px-4 py-3 bg-zinc-950 border border-zinc-800 text-zinc-100 placeholder:text-zinc-550 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600/25 focus:border-zinc-800 text-sm transition-all duration-200"
           placeholder="Catchy title goes here..."
           required
         />
@@ -122,7 +122,7 @@ const PostForm = ({ post = null, isEditing = false }) => {
           value={content}
           onChange={(e) => setContent(e.target.value)}
           rows="10"
-          className="w-full px-4 py-3 bg-zinc-950 border border-zinc-800 text-zinc-100 placeholder:text-zinc-550 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/25 focus:border-indigo-500 text-sm transition-all duration-200 resize-y min-h-[180px]"
+          className="w-full px-4 py-3 bg-zinc-950 border border-zinc-800 text-zinc-100 placeholder:text-zinc-550 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600/25 focus:border-zinc-800 text-sm transition-all duration-200 resize-y min-h-[180px]"
           placeholder="Write something great..."
           required
         />
@@ -169,12 +169,12 @@ const PostForm = ({ post = null, isEditing = false }) => {
           {tags.map((tag) => (
             <span
               key={tag}
-              className="inline-flex items-center bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-lg text-xs font-semibold">
+              className="inline-flex items-center bg-orange-600/10 text-orange-600 px-3 py-1 rounded-lg text-xs font-semibold">
               #{tag}
               <button
                 type="button"
                 onClick={() => removeTag(tag)}
-                className="ml-1.5 text-indigo-400 hover:text-indigo-200 transition-colors cursor-pointer">
+                className="ml-1.5 text-orange-600 hover:text-orange-500 transition-colors cursor-pointer">
                 <X size={12} />
               </button>
             </span>
@@ -188,7 +188,7 @@ const PostForm = ({ post = null, isEditing = false }) => {
             onChange={(e) => setTagInput(e.target.value)}
             onKeyDown={handleTagInputKeyDown}
             placeholder="Press Enter or comma to add tag"
-            className="flex-1 bg-zinc-950 border border-zinc-800 rounded-l-lg p-3 text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/25 transition-all"
+            className="flex-1 bg-zinc-950 border border-zinc-800 rounded-l-lg p-3 text-sm focus:outline-none focus:border-zinc-800 focus:ring-2 focus:ring-orange-600/25 transition-all"
           />
           <button
             type="button"

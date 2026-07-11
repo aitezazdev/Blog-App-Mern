@@ -8,7 +8,7 @@ const Footer = () => {
         
         <div>
           <h2 className="text-2xl font-bold tracking-tight text-white">
-            ZazBlog<span className="text-indigo-500">.</span>
+            ZazBlog<span className="text-orange-600">.</span>
           </h2>
           <p className="text-sm mt-4 text-zinc-500 leading-relaxed">
             Perspectives and tutorials on building modern digital products.
@@ -31,13 +31,13 @@ const Footer = () => {
             Follow our digital exploration and latest updates.
           </p>
           <div className="flex space-x-5 text-xl">
-            <a href="https://github.com/aitezazdev" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-indigo-400 transition-colors">
+            <a href="https://github.com/aitezazdev" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-orange-600 transition-colors">
               <FaGithub />
             </a>
-            <a href="https://linkedin.com/in/aitezaz-sikandar" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-indigo-400 transition-colors">
+            <a href="https://linkedin.com/in/aitezaz-sikandar" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-orange-600 transition-colors">
               <FaLinkedin />
             </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-indigo-400 transition-colors">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-orange-600 transition-colors">
               <FaFacebook />
             </a>
           </div>

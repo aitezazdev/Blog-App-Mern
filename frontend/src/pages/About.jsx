@@ -1,7 +1,7 @@
 export default function About() {
   return (
     <div className="max-w-3xl mx-auto px-6 py-20 md:py-28">
-      <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-8 text-white">About ZazBlog<span className="text-indigo-500">.</span></h1>
+      <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-8 text-white">About ZazBlog<span className="text-orange-600">.</span></h1>
       <p className="text-zinc-300 leading-relaxed mb-6 text-base md:text-lg">
         Welcome to <strong>ZazBlog</strong> — a digital publication dedicated to insightful, practical, and design-oriented content on modern web technologies, engineering architecture, and digital craftsmanship.
       </p>

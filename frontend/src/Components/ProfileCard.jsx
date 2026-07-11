@@ -100,7 +100,7 @@ const ProfileCard = () => {
 
   const renderLoadingState = () => (
     <div className="min-h-screen pt-20 bg-zinc-950 flex flex-col justify-center items-center">
-      <Loader size={40} className="text-indigo-500 animate-spin" />
+      <Loader size={40} className="text-orange-600 animate-spin" />
       <p className="text-zinc-400 text-sm mt-4">Loading profile...</p>
     </div>
   );
@@ -127,7 +127,7 @@ const ProfileCard = () => {
     <div className="bg-zinc-900/40 rounded-xl shadow-2xl p-6 sm:p-8 w-full max-w-2xl mx-auto mt-12 text-zinc-100 border border-zinc-800 backdrop-blur-sm">
       {/* Profile Header */}
       <div className="flex flex-col sm:flex-row items-center sm:items-start">
-        <div className="w-20 h-20 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center text-white text-2xl font-bold shadow-md mb-4 sm:mb-0">
+        <div className="w-20 h-20 rounded-full bg-zinc-800 border border-zinc-800 flex items-center justify-center text-white text-2xl font-bold shadow-md mb-4 sm:mb-0">
           {profile.avatarUrl ? (
             <img
               src={profile.avatarUrl}
@@ -145,7 +145,7 @@ const ProfileCard = () => {
               name="name"
               value={formData.name}
               onChange={handleInputChange}
-              className="text-xl font-semibold bg-zinc-950 border border-zinc-800 rounded-lg focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/25 text-white w-full px-3 py-1.5"
+              className="text-xl font-semibold bg-zinc-950 border border-zinc-800 rounded-lg focus:outline-none focus:border-zinc-800 focus:ring-2 focus:ring-orange-600/25 text-white w-full px-3 py-1.5"
               placeholder="Your name"
             />
           ) : (
@@ -161,7 +161,7 @@ const ProfileCard = () => {
       {/* Bio Section */}
       <div className="mt-6 bg-zinc-900/60 border border-zinc-800 rounded-lg p-5">
         <h3 className="font-medium text-zinc-300 flex items-center mb-3 text-sm uppercase tracking-wider">
-          <UserCircle size={18} className="mr-2 text-indigo-400" />
+          <UserCircle size={18} className="mr-2 text-orange-600" />
           About
         </h3>
         {editing ? (
@@ -169,7 +169,7 @@ const ProfileCard = () => {
             name="bio"
             value={formData.bio}
             onChange={handleInputChange}
-            className="mt-2 w-full bg-zinc-950 border border-zinc-800 rounded-lg p-3 resize-none focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/25 text-gray-100 text-sm"
+            className="mt-2 w-full bg-zinc-950 border border-zinc-800 rounded-lg p-3 resize-none focus:outline-none focus:border-zinc-800 focus:ring-2 focus:ring-orange-600/25 text-gray-100 text-sm"
             rows="4"
             placeholder="Tell us about yourself..."
           />
@@ -183,7 +183,7 @@ const ProfileCard = () => {
       {/* Stats Section */}
       <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
         <div className="bg-zinc-900/60 border border-zinc-800 rounded-lg p-4">
-          <p className="text-2xl font-bold text-indigo-400">
+          <p className="text-2xl font-bold text-orange-600">
             {profile.createdPosts.length}
           </p>
           <p className="text-xs uppercase tracking-widest text-zinc-500 mt-1">
@@ -192,7 +192,7 @@ const ProfileCard = () => {
         </div>
 
         <div className="bg-zinc-900/60 border border-zinc-800 rounded-lg p-4">
-          <p className="text-2xl font-bold text-violet-400">
+          <p className="text-2xl font-bold text-orange-600">
             {profile.savedPosts.length}
           </p>
           <p className="text-xs uppercase tracking-widest text-zinc-500 mt-1">
@@ -220,7 +220,7 @@ const ProfileCard = () => {
             <button
               onClick={handleUpdateProfile}
               disabled={loading}
-              className="bg-indigo-600 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-indigo-500 flex items-center justify-center transition disabled:opacity-50 cursor-pointer">
+              className="bg-orange-600 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-orange-600 flex items-center justify-center transition disabled:opacity-50 cursor-pointer">
               {loading ? (
                 <>
                   <Loader size={16} className="animate-spin mr-2" />
@@ -235,7 +235,7 @@ const ProfileCard = () => {
             </button>
             <button
               onClick={() => setEditing(false)}
-              className="bg-zinc-800 text-zinc-300 text-sm font-medium px-4 py-2 rounded-lg hover:bg-zinc-700 flex items-center justify-center border border-zinc-700 transition cursor-pointer">
+              className="bg-zinc-800 text-zinc-300 text-sm font-medium px-4 py-2 rounded-lg hover:bg-zinc-700 flex items-center justify-center border border-zinc-800 transition cursor-pointer">
               <X size={16} className="mr-2" />
               Cancel
             </button>
@@ -243,7 +243,7 @@ const ProfileCard = () => {
         ) : (
           <button
             onClick={() => setEditing(true)}
-            className="bg-zinc-800 text-zinc-300 text-sm font-medium px-4 py-2 rounded-lg hover:bg-zinc-700 flex items-center justify-center border border-zinc-700 transition cursor-pointer">
+            className="bg-zinc-800 text-zinc-300 text-sm font-medium px-4 py-2 rounded-lg hover:bg-zinc-700 flex items-center justify-center border border-zinc-800 transition cursor-pointer">
             <Edit2 size={16} className="mr-2" />
             Edit Profile
           </button>

@@ -33,7 +33,7 @@ const Navbar = () => {
       <nav className="fixed top-0 left-0 right-0 z-50 text-white bg-zinc-950/90 backdrop-blur-md border-b border-zinc-900 px-6 py-4 transition-all duration-300">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <NavLink to="/" className="text-xl font-bold tracking-tight hover:opacity-90 transition-opacity">
-            ZazBlog<span className="text-indigo-500">.</span>
+            ZazBlog<span className="text-orange-600">.</span>
           </NavLink>
 
           <div className="hidden md:flex items-center space-x-8">
@@ -41,7 +41,7 @@ const Navbar = () => {
               to="/"
               className={({ isActive }) => 
                 `text-sm font-medium transition-colors py-1 ${
-                  isActive ? "text-white border-b-2 border-indigo-500" : "text-zinc-400 hover:text-white"
+                  isActive ? "text-orange-600 border-b-2 border-zinc-800" : "text-zinc-400 hover:text-white"
                 }`
               }
             >
@@ -52,7 +52,7 @@ const Navbar = () => {
               to="/about"
               className={({ isActive }) => 
                 `text-sm font-medium transition-colors py-1 ${
-                  isActive ? "text-white border-b-2 border-indigo-500" : "text-zinc-400 hover:text-white"
+                  isActive ? "text-orange-600 border-b-2 border-zinc-800" : "text-zinc-400 hover:text-white"
                 }`
               }
             >
@@ -63,7 +63,7 @@ const Navbar = () => {
               to="/contact"
               className={({ isActive }) => 
                 `text-sm font-medium transition-colors py-1 ${
-                  isActive ? "text-white border-b-2 border-indigo-500" : "text-zinc-400 hover:text-white"
+                  isActive ? "text-orange-600 border-b-2 border-zinc-800" : "text-zinc-400 hover:text-white"
                 }`
               }
             >
@@ -76,7 +76,7 @@ const Navbar = () => {
                   to="/saved-posts"
                   className={({ isActive }) => 
                     `text-sm font-medium transition-colors py-1 ${
-                      isActive ? "text-white border-b-2 border-indigo-500" : "text-zinc-400 hover:text-white"
+                      isActive ? "text-orange-600 border-b-2 border-zinc-800" : "text-zinc-400 hover:text-white"
                     }`
                   }
                 >
@@ -91,8 +91,8 @@ const Navbar = () => {
                 <NavLink
                   to="/profile"
                   className={({ isActive }) => 
-                    `w-8 h-8 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center text-zinc-100 text-xs font-semibold tracking-wide transition-all hover:scale-105 hover:border-indigo-500 ${
-                      isActive ? "ring-2 ring-indigo-500/50 border-indigo-500" : ""
+                    `w-8 h-8 rounded-full bg-zinc-800 border border-zinc-800 flex items-center justify-center text-zinc-100 text-xs font-semibold tracking-wide transition-all hover:scale-105 hover:border-zinc-800 ${
+                      isActive ? "ring-2 ring-orange-600/50 border-zinc-800" : ""
                     }`
                   }
                   title={user?.name || "Profile"}
@@ -106,7 +106,7 @@ const Navbar = () => {
                   to="/login"
                   className={({ isActive }) => 
                     `text-sm font-medium transition-colors py-1 ${
-                      isActive ? "text-white border-b-2 border-indigo-500" : "text-zinc-400 hover:text-white"
+                      isActive ? "text-orange-600 border-b-2 border-zinc-800" : "text-zinc-400 hover:text-white"
                     }`
                   }
                 >
@@ -150,7 +150,7 @@ const Navbar = () => {
             to="/" 
             onClick={() => setMenuOpen(false)} 
             className={({ isActive }) => 
-              `text-base font-medium transition-colors ${isActive ? "text-indigo-400" : "text-zinc-300 hover:text-white"}`
+              `text-base font-medium transition-colors ${isActive ? "text-orange-600" : "text-zinc-300 hover:text-white"}`
             }
           >
             Home
@@ -159,7 +159,7 @@ const Navbar = () => {
             to="/about" 
             onClick={() => setMenuOpen(false)} 
             className={({ isActive }) => 
-              `text-base font-medium transition-colors ${isActive ? "text-indigo-400" : "text-zinc-300 hover:text-white"}`
+              `text-base font-medium transition-colors ${isActive ? "text-orange-600" : "text-zinc-300 hover:text-white"}`
             }
           >
             About
@@ -168,7 +168,7 @@ const Navbar = () => {
             to="/contact" 
             onClick={() => setMenuOpen(false)} 
             className={({ isActive }) => 
-              `text-base font-medium transition-colors ${isActive ? "text-indigo-400" : "text-zinc-300 hover:text-white"}`
+              `text-base font-medium transition-colors ${isActive ? "text-orange-600" : "text-zinc-300 hover:text-white"}`
             }
           >
             Contact
@@ -179,7 +179,7 @@ const Navbar = () => {
                 to="/saved-posts"
                 onClick={() => setMenuOpen(false)}
                 className={({ isActive }) => 
-                  `text-base font-medium transition-colors ${isActive ? "text-indigo-400" : "text-zinc-300 hover:text-white"}`
+                  `text-base font-medium transition-colors ${isActive ? "text-orange-600" : "text-zinc-300 hover:text-white"}`
                 }
               >
                 Saved Posts
@@ -191,7 +191,7 @@ const Navbar = () => {
                 to="/profile"
                 onClick={() => setMenuOpen(false)}
                 className={({ isActive }) => 
-                  `text-base font-medium transition-colors ${isActive ? "text-indigo-400" : "text-zinc-300 hover:text-white"}`
+                  `text-base font-medium transition-colors ${isActive ? "text-orange-600" : "text-zinc-300 hover:text-white"}`
                 }
               >
                 Profile ({user.name})
@@ -203,7 +203,7 @@ const Navbar = () => {
                 to="/login"
                 onClick={() => setMenuOpen(false)}
                 className={({ isActive }) => 
-                  `text-base font-medium transition-colors ${isActive ? "text-indigo-400" : "text-zinc-300 hover:text-white"}`
+                  `text-base font-medium transition-colors ${isActive ? "text-orange-600" : "text-zinc-300 hover:text-white"}`
                 }
               >
                 Login

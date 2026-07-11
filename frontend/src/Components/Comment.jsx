@@ -48,7 +48,7 @@ const Comment = ({ comment, user, onEdit, onDelete }) => {
   return (
     <div className="border-b border-zinc-800 pb-5 last:border-0">
       <div className="flex justify-between items-center mb-2">
-        <div className="font-semibold text-indigo-400 text-sm">
+        <div className="font-semibold text-orange-600 text-sm">
           {comment.user?.name || "Unknown"}
         </div>
         <div className="flex flex-row items-center gap-3">
@@ -89,7 +89,7 @@ const Comment = ({ comment, user, onEdit, onDelete }) => {
       {isEditing ? (
         <div className="mt-2">
           <textarea
-            className="w-full px-3 py-2 bg-zinc-950 border border-zinc-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/25 focus:border-indigo-500 transition text-zinc-100 text-sm"
+            className="w-full px-3 py-2 bg-zinc-950 border border-zinc-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600/25 focus:border-zinc-800 transition text-zinc-100 text-sm"
             rows="2"
             value={editedContent}
             onChange={(e) => setEditedContent(e.target.value)}

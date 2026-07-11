@@ -69,7 +69,7 @@ const PostCard = ({
   };
 
   return (
-    <div className="bg-zinc-900/40 rounded-xl hover:shadow-2xl hover:shadow-indigo-500/5 hover:border-zinc-700 transition-all duration-300 border border-zinc-800 overflow-hidden flex flex-col h-[450px]">
+    <div className="bg-zinc-900/40 rounded-xl hover:shadow-2xl hover:shadow-orange-600/5 hover:border-zinc-800 transition-all duration-300 border border-zinc-800 overflow-hidden flex flex-col h-[450px]">
       {post.image && (
         <Link to={`/post/${post._id}`} className="h-56 flex-shrink-0">
           <img
@@ -84,7 +84,7 @@ const PostCard = ({
         <div className="flex justify-between items-start mb-1">
           <Link
             to={`/post/${post._id}`}
-            className="text-xl py-1 font-bold text-zinc-100 hover:text-indigo-400 transition-colors line-clamp-2 tracking-tight"
+            className="text-xl py-1 font-bold text-zinc-100 hover:text-orange-600 transition-colors line-clamp-2 tracking-tight"
           >
             {getTruncatedContent(post.title, 4)}
           </Link>
@@ -136,7 +136,7 @@ const PostCard = ({
                 {post.tags.slice(0, 3).map((tag, index) => (
                   <span
                     key={index}
-                    className="text-xs bg-indigo-500/10 text-indigo-400 px-2 py-0.5 rounded hover:bg-indigo-500/20 transition-colors flex items-center gap-1"
+                    className="text-xs bg-orange-600/10 text-orange-600 px-2 py-0.5 rounded hover:bg-orange-600/20 transition-colors flex items-center gap-1"
                   >
                     # {tag}
                   </span>
@@ -170,13 +170,13 @@ const PostCard = ({
                 </div>
                 <Link
                   to={`/post/${post._id}`}
-                  className="flex items-center gap-1 cursor-pointer hover:text-indigo-400 transition-colors"
+                  className="flex items-center gap-1 cursor-pointer hover:text-orange-600 transition-colors"
                 >
                   <FaRegCommentDots />
                   <span className="text-sm">{post.comments?.length || 0}</span>
                 </Link>
               </div>
-              <div className="cursor-pointer text-zinc-400 hover:text-indigo-400 transition-colors">
+              <div className="cursor-pointer text-zinc-400 hover:text-orange-600 transition-colors">
                 <SavePostButton
                   post={post}
                   isSaved={isSaved}

@@ -67,7 +67,7 @@ const Register = () => {
                 <input
                   onChange={handleChange} autoComplete="off"
                   value={data.name}
-                  className="w-full pl-10 py-2.5 px-4 text-sm text-zinc-100 bg-zinc-950/50 border border-zinc-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/25 focus:border-indigo-500 transition-all duration-200"
+                  className="w-full pl-10 py-2.5 px-4 text-sm text-zinc-100 bg-zinc-950/50 border border-zinc-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600/25 focus:border-zinc-800 transition-all duration-200"
                   type="text"
                   name="name"
                   id="name"
@@ -86,7 +86,7 @@ const Register = () => {
                 <input autoComplete="off"
                   onChange={handleChange}
                   value={data.email}
-                  className="w-full pl-10 py-2.5 px-4 text-sm text-zinc-100 bg-zinc-950/50 border border-zinc-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/25 focus:border-indigo-500 transition-all duration-200"
+                  className="w-full pl-10 py-2.5 px-4 text-sm text-zinc-100 bg-zinc-950/50 border border-zinc-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600/25 focus:border-zinc-800 transition-all duration-200"
                   type="email"
                   name="email"
                   id="email"
@@ -105,7 +105,7 @@ const Register = () => {
                 <input autoComplete="off"
                   onChange={handleChange}
                   value={data.password}
-                  className="w-full pl-10 py-2.5 px-4 text-sm text-zinc-100 bg-zinc-950/50 border border-zinc-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/25 focus:border-indigo-500 transition-all duration-200"
+                  className="w-full pl-10 py-2.5 px-4 text-sm text-zinc-100 bg-zinc-950/50 border border-zinc-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600/25 focus:border-zinc-800 transition-all duration-200"
                   type="password"
                   name="password"
                   id="password"
@@ -118,7 +118,7 @@ const Register = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full flex justify-center py-2.5 px-4 rounded-lg text-zinc-950 font-semibold transition-all hover:bg-white bg-zinc-100 hover:scale-[1.01] active:scale-[0.99] text-sm focus:ring-2 focus:ring-indigo-500/20 disabled:opacity-60 cursor-pointer">
+              className="w-full flex justify-center py-2.5 px-4 rounded-lg text-zinc-950 font-semibold transition-all hover:bg-white bg-zinc-100 hover:scale-[1.01] active:scale-[0.99] text-sm focus:ring-2 focus:ring-orange-600/20 disabled:opacity-60 cursor-pointer">
               {loading ? (
                 <span className="flex items-center">
                   <BiLoaderAlt className="animate-spin -ml-1 mr-3 h-5 w-5" />
@@ -133,7 +133,7 @@ const Register = () => {
           <div className="mt-8 text-center">
             <p className="text-sm text-zinc-400">
               Already have an account?{" "}
-              <Link to="/login" className="text-indigo-400 hover:text-indigo-300 font-semibold transition-colors">
+              <Link to="/login" className="text-orange-600 hover:text-orange-500 font-semibold transition-colors">
                 Sign in
               </Link>
             </p>

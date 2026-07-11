@@ -144,7 +144,7 @@ const Home = () => {
     <div className="min-h-screen pb-20 relative bg-zinc-950">
       <HomeIntro searchData={setSearchTerm} />
       <div className="flex flex-col items-center justify-center py-20">
-        <Loader size={40} className="text-indigo-500 animate-spin" />
+        <Loader size={40} className="text-orange-600 animate-spin" />
         <p className="text-zinc-400 text-base mt-4">Loading posts...</p>
       </div>
       {user && renderCreatePostButton()}

@@ -32,7 +32,7 @@ export default function Contact() {
   return (
     <div className="max-w-2xl mx-auto px-6 py-20 md:py-28">
       <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-8 text-white">
-        Get in Touch<span className="text-indigo-500">.</span>
+        Get in Touch<span className="text-orange-600">.</span>
       </h1>
 
       <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-10">
@@ -48,7 +48,7 @@ export default function Contact() {
             placeholder="Your name"
             autoCorrect="off"
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-zinc-900/60 border border-zinc-800 text-zinc-100 placeholder:text-zinc-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200"
+            className="w-full px-4 py-3 bg-zinc-900/60 border border-zinc-800 text-zinc-100 placeholder:text-zinc-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600/20 focus:border-zinc-800 transition-all duration-200"
           />
           {errors.name && <span className="text-red-400 text-xs mt-1">{errors.name}</span>}
         </div>
@@ -61,7 +61,7 @@ export default function Contact() {
             placeholder="Email address"
             autoCorrect="off"
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-zinc-900/60 border border-zinc-800 text-zinc-100 placeholder:text-zinc-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200"
+            className="w-full px-4 py-3 bg-zinc-900/60 border border-zinc-800 text-zinc-100 placeholder:text-zinc-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600/20 focus:border-zinc-800 transition-all duration-200"
           />
           {errors.email && <span className="text-red-400 text-xs mt-1">{errors.email}</span>}
         </div>
@@ -73,7 +73,7 @@ export default function Contact() {
             rows="6"
             autoCorrect="off"
             onChange={handleChange}
-            className="w-full px-4 py-3 bg-zinc-900/60 border border-zinc-800 text-zinc-100 placeholder:text-zinc-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200 resize-y min-h-[120px]"
+            className="w-full px-4 py-3 bg-zinc-900/60 border border-zinc-800 text-zinc-100 placeholder:text-zinc-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600/20 focus:border-zinc-800 transition-all duration-200 resize-y min-h-[120px]"
           />
           {errors.message && <span className="text-red-400 text-xs mt-1">{errors.message}</span>}
         </div>

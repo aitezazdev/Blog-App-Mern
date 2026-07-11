@@ -24,7 +24,7 @@ const HomeIntro = ({ searchData }) => {
       <p className="text-zinc-400 text-sm sm:text-base md:text-lg max-w-2xl mb-8 leading-relaxed">
         Thought-provoking articles, practical tutorials, and engineering perspectives curated by digital product builders.
       </p>
-      <div className="flex items-center border border-zinc-800 rounded-xl px-4 py-3 w-full max-w-md focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/10 transition-all duration-200 bg-zinc-900/40 backdrop-blur-sm">
+      <div className="flex items-center border border-zinc-800 rounded-xl px-4 py-3 w-full max-w-md focus-within:border-zinc-800 focus-within:ring-2 focus-within:ring-orange-600/10 transition-all duration-200 bg-zinc-900/40 backdrop-blur-sm">
         <input
           value={data}
           onChange={handleChange}

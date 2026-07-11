@@ -76,7 +76,7 @@ const CommentsSection = ({ postId, user, initialComments = [] }) => {
         {user ? (
           <form className="mb-8" onSubmit={handleSubmit}>
             <textarea spellCheck="false"
-              className="w-full px-4 py-3 bg-zinc-950 border border-zinc-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/25 focus:border-indigo-500 text-zinc-100 placeholder:text-zinc-550 text-sm transition-all duration-200 resize-none"
+              className="w-full px-4 py-3 bg-zinc-950 border border-zinc-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-600/25 focus:border-zinc-800 text-zinc-100 placeholder:text-zinc-550 text-sm transition-all duration-200 resize-none"
               rows="3"
               placeholder="Join the discussion..."
               value={commentText}

@@ -114,7 +114,7 @@ const PostDetails = () => {
 
   const renderLoadingState = () => (
     <div className="min-h-screen pt-20 bg-zinc-950 flex flex-col justify-center items-center">
-      <Loader size={40} className="text-indigo-500 animate-spin" />
+      <Loader size={40} className="text-orange-600 animate-spin" />
       <p className="text-zinc-400 text-sm mt-4">Loading article...</p>
     </div>
   );
@@ -187,7 +187,7 @@ const PostDetails = () => {
           <div className="flex items-center gap-2 mb-6 text-sm text-zinc-500">
             <span>
               Posted by{" "}
-              <span className="font-semibold text-indigo-400">
+              <span className="font-semibold text-orange-600">
                 {post.author?.name || "Unknown"}
               </span>{" "}
               on {formattedDate}
@@ -203,7 +203,7 @@ const PostDetails = () => {
               {post.tags.map((tag, index) => (
                 <span
                   key={index}
-                  className="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-md"
+                  className="text-xs bg-orange-600/10 text-orange-600 px-3 py-1 rounded-md"
                 >
                   # {tag}
                 </span>
@@ -236,10 +236,10 @@ const PostDetails = () => {
               </div>
 
               <div
-                className="cursor-pointer text-zinc-400 hover:text-indigo-400 transition duration-150"
+                className="cursor-pointer text-zinc-400 hover:text-orange-600 transition duration-150"
                 onClick={toggleSave}>
                 {isPostSaved() ? (
-                  <FaBookmark size={18} className="text-indigo-400" />
+                  <FaBookmark size={18} className="text-orange-600" />
                 ) : (
                   <FaRegBookmark size={18} />
                 )}

@@ -23,7 +23,7 @@ const SavedPosts = () => {
   const renderLoadingState = () => (
    <div className="min-h-screen pt-20 relative bg-zinc-950">
       <div className="flex flex-col items-center justify-center py-20">
-        <Loader size={40} className="text-indigo-500 animate-spin" />
+        <Loader size={40} className="text-orange-600 animate-spin" />
         <p className="text-zinc-400 text-base mt-4">Loading saved posts...</p>
       </div>
     </div>
@@ -37,7 +37,7 @@ const SavedPosts = () => {
     <div className="min-h-screen w-full text-zinc-100 py-10 md:px-16 bg-zinc-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10">
         <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-10 border-b border-zinc-900 pb-4">
-          Bookmarked Articles<span className="text-indigo-500">.</span>
+          Bookmarked Articles<span className="text-orange-600">.</span>
         </h2>
 
         {savedPosts.length > 0 ? (
