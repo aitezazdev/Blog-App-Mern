@@ -129,7 +129,7 @@ const ProfileCard = () => {
     <div className="bg-[#171616] rounded-lg shadow-xl p-6 sm:p-8 w-full max-w-2xl mx-auto mt-10 text-gray-100 border border-[#1f1e1e]">
       {/* Profile Header */}
       <div className="flex flex-col sm:flex-row items-center sm:items-start">
-        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-emerald-500 to-purple-600 flex items-center justify-center text-white text-2xl font-bold shadow-md mb-4 sm:mb-0">
+        <div className="w-20 h-20 rounded-full bg-zinc-700 flex items-center justify-center text-white text-2xl font-bold shadow-md mb-4 sm:mb-0">
           {profile.avatarUrl ? (
             <img
               src={profile.avatarUrl}
