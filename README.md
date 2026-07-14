@@ -1,120 +1,132 @@
 # MERN Blog App
 
-This repository contains a full-stack blog application built with the MERN stack (MongoDB, Express, React, Node.js). It includes post creation, viewing, comments, favourites, and saved posts. User authentication is implemented manually using MongoDB for user storage.
+A full-stack blogging platform built with React 19, Node.js, Express, and MongoDB. The system includes manual token-based authentication, dynamic image upload management, bookmark reading lists, user profile administration, and optimized database queries.
+
+## Key Features
+
+- **Authentication System**: Manual user registration and login with passwords hashed using bcrypt. User sessions are secured with JSON Web Tokens (JWT) stored in client-side storage.
+- **Dynamic Image Uploads**: Multi-part form processing using Multer middleware. Images are uploaded to Cloudinary, and the returned URL and public ID are saved in MongoDB. The local server removes temporary upload files immediately after upload or failure.
+- **Bookmark Management**: Users can save posts to their reading list. Redux Toolkit synchronizes bookmarked states between pages and routes.
+- **Social Interaction**: Authenticated users can like posts and add comments. Comments are automatically linked to posts and displayed chronologically.
+- **Search and Index Optimization**: Text indexes on posts enable fast search across titles, tags, and content. Compound indexes optimize query performance when fetching author posts sorted by date.
+- **Profile Customization**: Users can edit their bio, name, and view their self-authored posts.
+
+## Technical Stack
+
+### Frontend
+- **React 19**: UI component model and reactivity.
+- **Redux Toolkit**: Centralized state management for authentication status and bookmark lists.
+- **Tailwind CSS 4**: Utility-first styling with modern performance configurations.
+- **React Router 7**: Declarative client-side routing.
+- **Recharts**: Data visualization.
+- **Axios**: HTTP requests with request and response interceptors.
+
+### Backend
+- **Express**: REST API framework.
+- **Mongoose / MongoDB**: Object Document Mapper (ODM) and NoSQL database.
+- **JWT (jsonwebtoken)**: Secure stateless authorization.
+- **Bcrypt**: Password hashing function.
+- **Multer**: Handling multipart/form-data for image uploads.
+- **Cloudinary SDK**: Media storage and management.
+- **Cors**: Cross-origin resource sharing configuration.
+- **Dotenv**: Environment variable loading.
 
 ---
 
-## Key features
+## Technical Details
 
-* User authentication (manual, with MongoDB + JWT)
+### Database Schemas and Indexes
+MongoDB collections are structured using Mongoose schemas:
+- **User Schema**: Stores authentication credentials, name, email (unique, indexed), bio, and references to created and saved posts.
+- **Post Schema**: Contains post fields (title, content, tags, author, likes, and comments references) and an image object containing `url` and `public_id`.
+  - **Text Index**: Created on `title`, `content`, and `tags` to support free-text search queries.
+  - **Compound Index**: Created on `{ author: 1, createdAt: -1 }` to speed up queries retrieving user-specific posts ordered by date.
+- **Comment Schema**: Stores comment content with index references to the respective post and author.
 
-  * Sign up, log in, log out
-  * Password hashing with bcrypt
-* Create, edit, and delete blog posts
-* View single post details
-* Add and view comments on posts
-* Mark posts as favourites / remove from favourites
-* Save posts for later reading
-* Contact form / contact page
-* Responsive layout (mobile-friendly)
-
----
-
-## Tech stack
-
-**Frontend:**
-
-* React (Vite or Create React App)
-* React Router for navigation
-* Context API or Redux for global state
-* Tailwind CSS or CSS modules for styling
-
-**Backend:**
-
-* Node.js
-* Express.js
-* MongoDB + Mongoose ODM
-* JSON Web Tokens (JWT) for authentication
-* bcrypt for password hashing
+### API Authentication Flow
+1. The user logs in with email and password.
+2. The server compares the password using bcrypt.
+3. Upon success, a JWT is signed with the user's ID and returned to the client.
+4. Axios request interceptors extract the JWT from local storage and attach it to the `Authorization` header of outgoing requests.
+5. If the backend returns a `401 Unauthorized` status (e.g., token expired), response interceptors clear local storage and redirect the browser to the login page.
 
 ---
 
-## How to run locally
+## Local Development Setup
 
-### 1. Clone the repo
+### Prerequisites
+- Node.js (v18 or higher)
+- npm or yarn
+- MongoDB instance (local or Atlas)
+- Cloudinary account
 
+### 1. Clone the Repository
 ```bash
 git clone https://github.com/aitezazdev/MERN-Blog-App.git
-```
-
-### 2. Install dependencies for both backend and frontend
-
-```bash
 cd MERN-Blog-App
-cd ./backend && npm install
-cd ./frontend && npm install
 ```
 
-### 3. Set up environment variables
+### 2. Configure Backend
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Create a `.env` file in the `backend/` directory:
+   ```env
+   PORT=5000
+   MONGO_URI=mongodb://localhost:27017/blog-app
+   JWT_SECRET=your_jwt_secret_key
+   CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+   CLOUDINARY_API_KEY=your_cloudinary_api_key
+   CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+   ```
+4. Start the backend development server:
+   ```bash
+   npm run dev
+   ```
 
-In the `backend/` folder, create a `.env` file:
-
-```
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
-```
-
-### 4. Start the development servers
-
-Backend:
-
-```bash
-cd backend
-npm run dev
-```
-
-Frontend:
-
-```bash
-cd frontend
-npm run dev
-```
-
-Open [http://localhost:5173](http://localhost:5173) for the frontend (or port from your setup) and [http://localhost:3000](http://localhost:3000) for the backend API.
+### 3. Configure Frontend
+1. Navigate to the frontend directory:
+   ```bash
+   cd ../frontend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Create or update the `.env` file in the `frontend/` directory:
+   ```env
+   VITE_API_URL=http://localhost:5000
+   ```
+4. Start the client application:
+   ```bash
+   npm run dev
+   ```
 
 ---
 
-## Screenshots
+## Visual Preview
 
-### Login Page
+The following screenshots illustrate the design and core interfaces of the application.
 
-![App Screenshot](/frontend/public/githubPictures/Screenshot%20from%202025-08-12%2016-23-24.png)
+### Home Interface
+![Home Interface](./projectImages/1.webp)
 
-### Home Page
-
-![App Screenshot](/frontend/public/githubPictures/Screenshot%20from%202025-08-12%2016-23-53.png)
-
-### Home Page Blogs
-
-![App Screenshot](/frontend/public/githubPictures/Screenshot%20from%202025-08-12%2016-24-00.png)
-
-### Blogs Details
-
-![App Screenshot](/frontend/public/githubPictures/Screenshot%20from%202025-08-12%2016-24-11.png)
-
-### Blogs Details Comments
-
-![App Screenshot](/frontend/public/githubPictures//Screenshot%20from%202025-08-12%2016-24-34.png)
-
-### Bookmark Page
-
-![App Screenshot](/frontend/public/githubPictures/Screenshot%20from%202025-08-12%2016-24-51.png)
+### Post View
+![Post View](./projectImages/2.webp)
 
 ### Profile Details
-![App Screenshot](/frontend/public/githubPictures/Screenshot%20from%202025-08-12%2016-24-57.png)
+![Profile Details](./projectImages/3.webp)
 
-### About Page
-![App Screenshot](/frontend/public/githubPictures/Screenshot%20from%202025-08-12%2016-25-09.png)
+### User Settings
+![User Settings](./projectImages/4.webp)
 
----
+### Saved Reading List
+![Saved Reading List](./projectImages/5.webp)
+
+### Authentication
+![Authentication](./projectImages/6.webp)
